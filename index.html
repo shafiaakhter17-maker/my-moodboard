@@ -2,9 +2,124 @@
 <html>
 <head>
   <title>My Little World</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, serif;
+      background: #f5efe6;
+      color: #4d4038;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .room {
+      width: 90%;
+      max-width: 900px;
+      min-height: 600px;
+      background: #ead8c5;
+      border: 8px solid #d1b69c;
+      border-radius: 25px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(80,60,40,0.15);
+    }
+
+    .title {
+      text-align: center;
+      padding: 25px;
+      font-size: 30px;
+      font-style: italic;
+    }
+
+    .object {
+      position: absolute;
+      cursor: pointer;
+      transition: 0.25s;
+      text-align: center;
+      user-select: none;
+    }
+
+    .object:hover {
+      transform: scale(1.08);
+    }
+
+    .books {
+      left: 8%;
+      bottom: 15%;
+      font-size: 65px;
+    }
+
+    .photos {
+      right: 10%;
+      top: 25%;
+      font-size: 65px;
+    }
+
+    .music {
+      left: 43%;
+      bottom: 12%;
+      font-size: 65px;
+    }
+
+    .bed {
+      right: 7%;
+      bottom: 8%;
+      font-size: 75px;
+    }
+
+    .plant {
+      left: 10%;
+      top: 25%;
+      font-size: 65px;
+    }
+
+    .hint {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.65;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>🌷 My Little World</h1>
-  <p>It works! ✨</p>
+
+<div class="room">
+
+  <div class="title">
+    ✿ My Little World ✿
+  </div>
+
+  <div class="object books" onclick="alert('Bookshelf 📚')">
+    📚
+  </div>
+
+  <div class="object photos" onclick="alert('Photos 🖼️')">
+    🖼️
+  </div>
+
+  <div class="object music" onclick="alert('Music 🎧')">
+    🎧
+  </div>
+
+  <div class="object bed" onclick="alert('Cozy Corner 🛏️')">
+    🛏️
+  </div>
+
+  <div class="object plant" onclick="alert('Memories 🌱')">
+    🌱
+  </div>
+
+  <div class="hint">
+    ✨ Click the little objects ✨
+  </div>
+
+</div>
+
 </body>
 </html>
