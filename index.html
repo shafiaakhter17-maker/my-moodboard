@@ -4,475 +4,1222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>little things ♡</title>
+<title>My Little Room ♡</title>
 
 <style>
-* {
-  box-sizing: border-box;
+
+*{
+    box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  background: #eee7df;
-  color: #403a36;
-  font-family: Georgia, serif;
-  overflow-x: hidden;
+body{
+    margin:0;
+    font-family:Georgia,serif;
+    color:#4b3b35;
+    background:#e8ddd4;
 }
 
-/* PAPER TEXTURE */
+/* ================= ROOM ================= */
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.25;
-  background-image:
-    radial-gradient(#8b8178 0.5px, transparent 0.5px);
-  background-size: 8px 8px;
+.room{
+    height:100vh;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            #eee4db 0%,
+            #eee4db 68%,
+            #b89579 68%,
+            #b89579 100%
+        );
 }
 
-/* HEADER */
-
-header {
-  text-align: center;
-  padding: 70px 20px 35px;
+.wall{
+    position:absolute;
+    inset:0 0 32% 0;
+    background-image:
+        radial-gradient(#d8c9bd 1px,transparent 1px);
+    background-size:25px 25px;
 }
 
-.small {
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #8b8178;
+/* TITLE */
+
+.room-title{
+    position:absolute;
+    top:25px;
+    left:35px;
+    font-size:28px;
+    font-style:italic;
 }
 
-h1 {
-  font-size: clamp(42px, 8vw, 75px);
-  font-weight: normal;
-  margin: 15px 0 8px;
+/* WINDOW */
+
+.window{
+    position:absolute;
+    top:12%;
+    left:7%;
+    width:180px;
+    height:210px;
+    border:12px solid #927565;
+    background:#a9c5c4;
+    box-shadow:0 10px 25px #765c4c33;
 }
 
-.subtitle {
-  font-family: Arial, sans-serif;
-  color: #81766e;
-  font-size: 14px;
+.window:before{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:100%;
+    background:#927565;
+    left:50%;
 }
 
-/* BOARD */
-
-.board {
-  width: min(1200px, 92%);
-  margin: auto;
-  columns: 4 220px;
-  column-gap: 25px;
+.window:after{
+    content:"";
+    position:absolute;
+    height:8px;
+    width:100%;
+    background:#927565;
+    top:50%;
 }
 
-/* CARDS */
-
-.card {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 25px;
-  break-inside: avoid;
-
-  background: #fffaf5;
-  padding: 13px;
-
-  box-shadow:
-    0 8px 25px rgba(70,55,45,0.12);
-
-  cursor: grab;
-
-  transition: transform .25s ease, box-shadow .25s ease;
+.moon{
+    position:absolute;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#fff1c9;
+    top:20px;
+    right:20px;
+    box-shadow:0 0 25px #fff1c9;
 }
 
-.card:hover {
-  transform: rotate(0deg) scale(1.025);
-  box-shadow:
-    0 14px 35px rgba(70,55,45,0.18);
+/* BED */
+
+.bed{
+    position:absolute;
+    width:38%;
+    height:25%;
+    right:6%;
+    bottom:25%;
+    background:#96725f;
+    border-radius:18px;
 }
 
-.card:active {
-  cursor: grabbing;
+.mattress{
+    position:absolute;
+    width:96%;
+    height:75%;
+    top:-15%;
+    left:2%;
+    background:#f4e8df;
+    border-radius:15px;
 }
 
-/* RANDOM ROTATIONS */
-
-.card:nth-child(1) { transform: rotate(-2deg); }
-.card:nth-child(2) { transform: rotate(1.5deg); }
-.card:nth-child(3) { transform: rotate(-1deg); }
-.card:nth-child(4) { transform: rotate(2deg); }
-.card:nth-child(5) { transform: rotate(-2.5deg); }
-.card:nth-child(6) { transform: rotate(1deg); }
-.card:nth-child(7) { transform: rotate(-1.5deg); }
-.card:nth-child(8) { transform: rotate(2deg); }
-
-/* IMAGES */
-
-.card img {
-  width: 100%;
-  display: block;
+.pillow{
+    position:absolute;
+    width:30%;
+    height:35%;
+    top:3%;
+    left:8%;
+    background:#fff9f3;
+    border-radius:15px;
 }
 
-/* TAPE */
-
-.tape {
-  position: absolute;
-  width: 70px;
-  height: 22px;
-  background: rgba(210,195,174,.65);
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-2deg);
+.blanket{
+    position:absolute;
+    width:55%;
+    height:72%;
+    right:0;
+    top:0;
+    background:#cbb0a5;
+    border-radius:15px;
 }
 
-/* QUOTE */
+/* DESK */
 
-.quote {
-  min-height: 190px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  padding: 35px 25px;
-
-  font-size: 23px;
-  line-height: 1.5;
+.desk{
+    position:absolute;
+    width:37%;
+    height:12%;
+    bottom:24%;
+    left:5%;
+    background:#745541;
+    border-radius:10px;
 }
 
-.quote small {
-  display: block;
-  margin-top: 18px;
-  font-family: Arial, sans-serif;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: #9a8d83;
+.desk:after{
+    content:"";
+    position:absolute;
+    width:7%;
+    height:150%;
+    left:8%;
+    top:90%;
+    background:#5f4637;
+    box-shadow:300px 0 #5f4637;
 }
 
-/* MUSIC */
+/* LAPTOP */
 
-.music {
-  padding: 30px 20px;
-  text-align: center;
-  font-family: Arial, sans-serif;
+.laptop{
+    position:absolute;
+    width:25%;
+    height:10%;
+    left:11%;
+    bottom:35%;
+    cursor:pointer;
+    transition:.3s;
 }
 
-.music .disc {
-  width: 90px;
-  height: 90px;
-  margin: auto;
-  border-radius: 50%;
-
-  background:
-    repeating-radial-gradient(
-      circle,
-      #403a36 0px,
-      #403a36 3px,
-      #514943 4px,
-      #403a36 6px
-    );
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.laptop:hover{
+    transform:scale(1.07);
 }
 
-.music .disc::after {
-  content: "♡";
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #eee7df;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #403a36;
+.screen{
+    position:absolute;
+    width:100%;
+    height:120%;
+    bottom:45%;
+    background:#30282c;
+    border:8px solid #625456;
+    border-radius:8px;
 }
 
-.music h3 {
-  font-family: Georgia, serif;
-  font-size: 20px;
-  margin-bottom: 4px;
+.screen span{
+    position:absolute;
+    top:25%;
+    left:45%;
+    font-size:32px;
+    color:#efd8d5;
 }
 
-/* COLORS */
-
-.palette {
-  display: flex;
-  height: 110px;
+.laptop-base{
+    position:absolute;
+    width:110%;
+    height:18%;
+    bottom:25%;
+    left:-5%;
+    background:#917b78;
+    border-radius:5px 5px 12px 12px;
 }
 
-.palette div {
-  flex: 1;
+/* BOOKSHELF */
+
+.bookshelf{
+    position:absolute;
+    width:16%;
+    height:43%;
+    left:50%;
+    top:14%;
+    background:#856451;
+    padding:10px;
+    cursor:pointer;
+    transition:.3s;
 }
 
-.color-text {
-  padding: 12px;
-  font-family: Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 1px;
+.bookshelf:hover{
+    transform:scale(1.04);
 }
 
-/* NOTE */
-
-.note {
-  background: #e7dccb;
-  padding: 35px 25px;
-  font-size: 19px;
-  line-height: 1.7;
+.shelf-row{
+    height:27%;
+    margin-bottom:8%;
+    border-bottom:7px solid #614737;
+    display:flex;
+    align-items:end;
+    gap:5px;
 }
 
-/* POLAROID */
-
-.polaroid {
-  background: white;
-  padding: 12px 12px 35px;
+.book{
+    width:18%;
+    height:80%;
+    background:#c9aaa0;
 }
 
-.polaroid img {
-  filter: sepia(.15);
+.book:nth-child(2){
+    height:65%;
+    background:#b6a187;
 }
 
-.polaroid p {
-  text-align: center;
-  font-family: "Comic Sans MS", cursive;
-  font-size: 14px;
+.book:nth-child(3){
+    height:90%;
+    background:#d8c4ac;
 }
 
-/* FOOTER */
+/* HEADPHONES */
 
-footer {
-  text-align: center;
-  padding: 70px 20px;
-  font-family: Arial, sans-serif;
-  color: #8b8178;
-  font-size: 12px;
+.headphones{
+    position:absolute;
+    left:28%;
+    bottom:38%;
+    font-size:55px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.headphones:hover{
+    transform:scale(1.1);
+}
+
+/* PLANT */
+
+.plant{
+    position:absolute;
+    right:45%;
+    bottom:25%;
+    font-size:60px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.plant:hover{
+    transform:rotate(5deg) scale(1.1);
+}
+
+/* PHOTOS */
+
+.wall-photos{
+    position:absolute;
+    right:8%;
+    top:10%;
+    display:flex;
+    gap:15px;
+}
+
+.photo-frame{
+    width:85px;
+    height:105px;
+    background:#fffaf4;
+    padding:7px;
+    box-shadow:3px 5px 15px #0002;
+    transform:rotate(-5deg);
+    cursor:pointer;
+}
+
+.photo-frame:nth-child(2){
+    transform:rotate(5deg);
+}
+
+.photo-inside{
+    width:100%;
+    height:75%;
+    background:#d4b8aa;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+}
+
+/* RUG */
+
+.rug{
+    position:absolute;
+    width:45%;
+    height:15%;
+    bottom:5%;
+    left:27%;
+    background:#d4b6a2;
+    border-radius:50%;
+    box-shadow:inset 0 0 0 8px #c19d87;
+}
+
+/* ================= BUTTON ================= */
+
+.room-object{
+    cursor:pointer;
+}
+
+/* ================= POPUP ================= */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:#3d302d99;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    padding:20px;
+}
+
+.popup{
+    background:#fff8f1;
+    width:min(90%,420px);
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 20px 60px #0004;
+}
+
+.popup h2{
+    margin-top:0;
+}
+
+.popup button{
+    border:0;
+    padding:10px 20px;
+    border-radius:20px;
+    background:#ad8c7c;
+    color:white;
+    cursor:pointer;
+}
+
+/* ================= PHOTOS PAGE ================= */
+
+.photos-page{
+    display:none;
+    min-height:100vh;
+    background:#f4ebe3;
+    padding:25px;
+}
+
+.back{
+    border:0;
+    background:#c3a395;
+    color:white;
+    padding:10px 18px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.photos-header{
+    text-align:center;
+    margin:15px 0 25px;
+}
+
+.photos-header h1{
+    font-size:38px;
+    margin:5px;
+}
+
+.photos-header p{
+    color:#806d65;
+}
+
+/* CATEGORY BAR */
+
+.categories{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding:10px 5px 20px;
+}
+
+.category{
+    flex-shrink:0;
+    border:0;
+    background:#e1cec4;
+    color:#5d4b44;
+    padding:10px 18px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.category.active{
+    background:#987769;
+    color:white;
+}
+
+.add-category{
+    flex-shrink:0;
+    border:2px dashed #ad9081;
+    background:transparent;
+    color:#795f54;
+    padding:9px 18px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+/* UPLOAD */
+
+.upload-area{
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.upload-button{
+    background:#927466;
+    color:white;
+    padding:12px 22px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+#fileInput{
+    display:none;
+}
+
+/* MASONRY */
+
+.gallery{
+    columns:4 180px;
+    column-gap:16px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.pin{
+    break-inside:avoid;
+    margin-bottom:16px;
+    position:relative;
+    cursor:pointer;
+}
+
+.pin img{
+    width:100%;
+    display:block;
+    border-radius:16px;
+    transition:.25s;
+}
+
+.pin img:hover{
+    transform:scale(1.015);
+}
+
+.delete{
+    position:absolute;
+    top:8px;
+    right:8px;
+    border:0;
+    background:#ffffffdd;
+    border-radius:50%;
+    width:32px;
+    height:32px;
+    cursor:pointer;
+    display:none;
+}
+
+.pin:hover .delete{
+    display:block;
+}
+
+.empty{
+    text-align:center;
+    padding:60px 20px;
+    color:#8c776d;
+}
+
+/* IMAGE VIEWER */
+
+.viewer{
+    position:fixed;
+    inset:0;
+    background:#201a19ee;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:200;
+    padding:20px;
+}
+
+.viewer img{
+    max-width:90%;
+    max-height:90%;
+    object-fit:contain;
+    border-radius:15px;
+}
+
+.close-viewer{
+    position:absolute;
+    top:20px;
+    right:25px;
+    background:white;
+    border:0;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    font-size:20px;
+    cursor:pointer;
 }
 
 /* MOBILE */
 
-@media(max-width:600px) {
+@media(max-width:700px){
 
-  header {
-    padding-top: 50px;
-  }
+    .room-title{
+        font-size:21px;
+        left:20px;
+    }
 
-  .board {
-    columns: 2 150px;
-    column-gap: 15px;
-  }
+    .window{
+        width:120px;
+        height:150px;
+    }
 
-  .card {
-    margin-bottom: 15px;
-  }
+    .bookshelf{
+        width:23%;
+        height:35%;
+        left:45%;
+    }
 
-  .quote {
-    font-size: 18px;
-  }
+    .bed{
+        width:48%;
+        height:22%;
+    }
+
+    .desk{
+        width:42%;
+    }
+
+    .laptop{
+        width:30%;
+    }
+
+    .wall-photos{
+        display:none;
+    }
+
+    .headphones{
+        left:27%;
+        font-size:42px;
+    }
+
+    .plant{
+        font-size:45px;
+    }
 
 }
+
 </style>
 </head>
 
 <body>
 
-<header>
 
-  <div class="small">♡ a collection of little things ♡</div>
+<!-- ================================================= -->
+<!-- ROOM -->
+<!-- ================================================= -->
 
-  <h1>my moodboard</h1>
+<div class="room" id="room">
 
-  <div class="subtitle">
-    things I love · things I notice · things I feel
-  </div>
+    <div class="wall"></div>
 
-</header>
-
-
-<main class="board">
-
-  <!-- IMAGE -->
-
-  <div class="card">
-    <div class="tape"></div>
-
-    <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=800&q=80">
-
-  </div>
-
-
-  <!-- QUOTE -->
-
-  <div class="card quote">
-
-    <div>
-      “Collecting little moments
-      <br>
-      that make ordinary days feel special.”
-
-      <small>— little reminder</small>
+    <div class="room-title">
+        my little corner ♡
     </div>
 
-  </div>
+    <div class="window">
+        <div class="moon"></div>
+    </div>
 
+    <!-- WALL PHOTOS -->
 
-  <!-- POLAROID -->
+    <div class="wall-photos">
 
-  <div class="card polaroid">
+        <div class="photo-frame"
+             onclick="openPhotos()">
 
-    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80">
+            <div class="photo-inside">
+                🌷
+            </div>
 
-    <p>somewhere I would like to be ♡</p>
+        </div>
 
-  </div>
+        <div class="photo-frame"
+             onclick="openPhotos()">
 
+            <div class="photo-inside">
+                ☁️
+            </div>
 
-  <!-- MUSIC -->
-
-  <div class="card music">
-
-    <div class="disc"></div>
-
-    <h3>currently listening</h3>
-
-    <p>soft songs & quiet sounds ♫</p>
-
-    <p>──────── ♫ ────────</p>
-
-  </div>
-
-
-  <!-- PALETTE -->
-
-  <div class="card">
-
-    <div class="palette">
-
-      <div style="background:#d8c3b5"></div>
-      <div style="background:#eee3d7"></div>
-      <div style="background:#b9a99c"></div>
-      <div style="background:#76685e"></div>
+        </div>
 
     </div>
 
-    <div class="color-text">
-      today's colors · warm & quiet
-    </div>
 
-  </div>
+    <!-- BOOKSHELF -->
 
+    <div class="bookshelf"
+         onclick="showPopup(
+         'Bookshelf 📚',
+         'This can become your personal book collection!'
+         )">
 
-  <!-- JOURNAL -->
+        <div class="shelf-row">
+            <div class="book"></div>
+            <div class="book"></div>
+            <div class="book"></div>
+        </div>
 
-  <div class="card note">
+        <div class="shelf-row">
+            <div class="book"></div>
+            <div class="book"></div>
+            <div class="book"></div>
+        </div>
 
-    <div class="tape"></div>
-
-    <b>little note to myself</b>
-
-    <br><br>
-
-    You don't have to have everything
-    figured out.
-
-    <br>
-
-    Let things take their time.
-
-  </div>
-
-
-  <!-- ANOTHER IMAGE -->
-
-  <div class="card">
-
-    <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80">
-
-  </div>
-
-
-  <!-- FINAL QUOTE -->
-
-  <div class="card quote">
-
-    <div>
-
-      “There is beauty
-      <br>
-      in the unfinished.”
-
-      <small>♡</small>
+        <div class="shelf-row">
+            <div class="book"></div>
+            <div class="book"></div>
+        </div>
 
     </div>
 
-  </div>
 
-</main>
+    <!-- BED -->
+
+    <div class="bed">
+
+        <div class="mattress"></div>
+
+        <div class="pillow"></div>
+
+        <div class="blanket"></div>
+
+    </div>
 
 
-<footer>
+    <!-- RUG -->
 
-  made with little pieces of the internet ♡
+    <div class="rug"></div>
 
-</footer>
+
+    <!-- DESK -->
+
+    <div class="desk"></div>
+
+
+    <!-- LAPTOP -->
+
+    <div class="laptop"
+         onclick="showPopup(
+         'Laptop 💻',
+         'A little place for your digital world.'
+         )">
+
+        <div class="screen">
+            <span>♡</span>
+        </div>
+
+        <div class="laptop-base"></div>
+
+    </div>
+
+
+    <!-- HEADPHONES -->
+
+    <div class="headphones"
+         onclick="showPopup(
+         'Music 🎧',
+         'Your music corner could live here!'
+         )">
+
+        🎧
+
+    </div>
+
+
+    <!-- PLANT -->
+
+    <div class="plant"
+         onclick="showPopup(
+         'Little Plant 🌱',
+         'Take a little break. You deserve one ♡'
+         )">
+
+        🪴
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- PHOTOS PAGE -->
+<!-- ================================================= -->
+
+<div class="photos-page" id="photosPage">
+
+    <button class="back" onclick="closePhotos()">
+        ← back to room
+    </button>
+
+
+    <div class="photos-header">
+
+        <h1>my photo world ♡</h1>
+
+        <p>
+            save all the little things you love
+        </p>
+
+    </div>
+
+
+    <!-- CATEGORIES -->
+
+    <div class="categories" id="categories">
+
+        <button class="category active"
+                onclick="selectCategory('Aesthetic',this)">
+            ✨ Aesthetic
+        </button>
+
+        <button class="category"
+                onclick="selectCategory('Nature',this)">
+            🌿 Nature
+        </button>
+
+        <button class="category"
+                onclick="selectCategory('Anime',this)">
+            🎌 Anime
+        </button>
+
+        <button class="category"
+                onclick="selectCategory('Food',this)">
+            🍰 Food
+        </button>
+
+        <button class="category"
+                onclick="selectCategory('Travel',this)">
+            ✈️ Travel
+        </button>
+
+        <button class="add-category"
+                onclick="addCategory()">
+            ＋ Add section
+        </button>
+
+    </div>
+
+
+    <!-- UPLOAD -->
+
+    <div class="upload-area">
+
+        <label class="upload-button">
+
+            ＋ Add pictures
+
+            <input
+                id="fileInput"
+                type="file"
+                accept="image/*"
+                multiple
+                onchange="uploadImages(event)"
+            >
+
+        </label>
+
+    </div>
+
+
+    <!-- GALLERY -->
+
+    <div class="gallery" id="gallery"></div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- POPUP -->
+<!-- ================================================= -->
+
+<div class="overlay" id="overlay">
+
+    <div class="popup">
+
+        <h2 id="popupTitle"></h2>
+
+        <p id="popupText"></p>
+
+        <button onclick="closePopup()">
+            close ♡
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================================================= -->
+<!-- IMAGE VIEWER -->
+<!-- ================================================= -->
+
+<div class="viewer" id="viewer">
+
+    <button
+        class="close-viewer"
+        onclick="closeViewer()">
+        ×
+    </button>
+
+    <img id="viewerImage">
+
+</div>
+
 
 
 <script>
 
-/* SIMPLE DRAGGING */
+/* ================================================= */
+/* BASIC POPUP */
+/* ================================================= */
 
-const cards = document.querySelectorAll(".card");
+function showPopup(title,text){
 
-cards.forEach(card => {
+    document.getElementById("popupTitle").innerText = title;
 
-  let isDragging = false;
-  let startX;
-  let startY;
-  let originalX = 0;
-  let originalY = 0;
+    document.getElementById("popupText").innerText = text;
 
-  card.addEventListener("pointerdown", (e) => {
+    document.getElementById("overlay").style.display = "flex";
+}
 
-    isDragging = true;
+function closePopup(){
 
-    card.setPointerCapture(e.pointerId);
+    document.getElementById("overlay").style.display = "none";
+}
 
-    startX = e.clientX;
-    startY = e.clientY;
 
-    card.style.zIndex = 1000;
 
-  });
+/* ================================================= */
+/* PHOTOS PAGE */
+/* ================================================= */
 
-  card.addEventListener("pointermove", (e) => {
+function openPhotos(){
 
-    if (!isDragging) return;
+    document.getElementById("room").style.display = "none";
 
-    const x = e.clientX - startX;
-    const y = e.clientY - startY;
+    document.getElementById("photosPage").style.display = "block";
 
-    card.style.transform =
-      `translate(${originalX + x}px, ${originalY + y}px) rotate(0deg)`;
+    renderGallery();
 
-  });
+}
 
-  card.addEventListener("pointerup", () => {
+function closePhotos(){
 
-    isDragging = false;
+    document.getElementById("photosPage").style.display = "none";
 
-    originalX += 0;
-    originalY += 0;
+    document.getElementById("room").style.display = "block";
 
-  });
+}
 
-});
+
+
+/* ================================================= */
+/* CATEGORIES */
+/* ================================================= */
+
+let currentCategory = "Aesthetic";
+
+let categories =
+JSON.parse(localStorage.getItem("myCategories")) || [
+    "Aesthetic",
+    "Nature",
+    "Anime",
+    "Food",
+    "Travel"
+];
+
+
+function saveCategories(){
+
+    localStorage.setItem(
+        "myCategories",
+        JSON.stringify(categories)
+    );
+
+}
+
+
+function addCategory(){
+
+    let name = prompt(
+        "What do you want to call your new section?"
+    );
+
+    if(!name) return;
+
+    name = name.trim();
+
+    if(!name) return;
+
+    if(categories.includes(name)){
+
+        alert("That section already exists!");
+
+        return;
+
+    }
+
+    categories.push(name);
+
+    saveCategories();
+
+    renderCategories();
+
+    currentCategory = name;
+
+    renderGallery();
+
+}
+
+
+function renderCategories(){
+
+    const container =
+        document.getElementById("categories");
+
+    container.innerHTML = "";
+
+    categories.forEach(category => {
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "category";
+
+        if(category === currentCategory){
+
+            button.classList.add("active");
+
+        }
+
+        button.innerText =
+            "♡ " + category;
+
+        button.onclick = function(){
+
+            selectCategory(category,button);
+
+        };
+
+        container.appendChild(button);
+
+    });
+
+
+    const add =
+        document.createElement("button");
+
+    add.className =
+        "add-category";
+
+    add.innerText =
+        "＋ Add section";
+
+    add.onclick =
+        addCategory;
+
+    container.appendChild(add);
+
+}
+
+
+function selectCategory(category,button){
+
+    currentCategory = category;
+
+    document
+        .querySelectorAll(".category")
+        .forEach(b => b.classList.remove("active"));
+
+    button.classList.add("active");
+
+    renderGallery();
+
+}
+
+
+
+/* ================================================= */
+/* IMAGE STORAGE */
+/* ================================================= */
+
+let images =
+JSON.parse(localStorage.getItem("myRoomImages")) || {};
+
+
+function saveImages(){
+
+    localStorage.setItem(
+        "myRoomImages",
+        JSON.stringify(images)
+    );
+
+}
+
+
+
+/* ================================================= */
+/* UPLOAD */
+/* ================================================= */
+
+function uploadImages(event){
+
+    const files =
+        Array.from(event.target.files);
+
+    if(!images[currentCategory]){
+
+        images[currentCategory] = [];
+
+    }
+
+
+    files.forEach(file => {
+
+        const reader =
+            new FileReader();
+
+        reader.onload = function(e){
+
+            images[currentCategory].push(
+                e.target.result
+            );
+
+            saveImages();
+
+            renderGallery();
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+
+    event.target.value = "";
+
+}
+
+
+
+/* ================================================= */
+/* GALLERY */
+/* ================================================= */
+
+function renderGallery(){
+
+    const gallery =
+        document.getElementById("gallery");
+
+    gallery.innerHTML = "";
+
+
+    const list =
+        images[currentCategory] || [];
+
+
+    if(list.length === 0){
+
+        gallery.innerHTML = `
+            <div class="empty">
+                <h2>Nothing here yet ♡</h2>
+                <p>
+                    Add some pictures to your
+                    ${currentCategory} collection.
+                </p>
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    list.forEach((src,index) => {
+
+        const pin =
+            document.createElement("div");
+
+        pin.className = "pin";
+
+
+        const img =
+            document.createElement("img");
+
+        img.src = src;
+
+
+        img.onclick = function(){
+
+            openViewer(src);
+
+        };
+
+
+        const deleteButton =
+            document.createElement("button");
+
+        deleteButton.className = "delete";
+
+        deleteButton.innerText = "×";
+
+
+        deleteButton.onclick = function(event){
+
+            event.stopPropagation();
+
+            if(
+                confirm(
+                    "Delete this picture?"
+                )
+            ){
+
+                images[currentCategory]
+                    .splice(index,1);
+
+                saveImages();
+
+                renderGallery();
+
+            }
+
+        };
+
+
+        pin.appendChild(img);
+
+        pin.appendChild(deleteButton);
+
+        gallery.appendChild(pin);
+
+    });
+
+}
+
+
+
+/* ================================================= */
+/* IMAGE VIEWER */
+/* ================================================= */
+
+function openViewer(src){
+
+    document.getElementById(
+        "viewerImage"
+    ).src = src;
+
+    document.getElementById(
+        "viewer"
+    ).style.display = "flex";
+
+}
+
+
+function closeViewer(){
+
+    document.getElementById(
+        "viewer"
+    ).style.display = "none";
+
+}
+
+
+
+/* ================================================= */
+/* LOAD */
+/* ================================================= */
+
+renderCategories();
 
 </script>
 
 </body>
-</html>        
+</html>
