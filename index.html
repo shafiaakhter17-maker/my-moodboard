@@ -4,42 +4,46 @@
   <title>My Little World</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: Georgia, serif;
       background: #f5efe6;
       color: #4d4038;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 
-    .room {
-      width: 90%;
+    .page {
+      min-height: 100vh;
+      padding: 25px;
+    }
+
+    .home {
       max-width: 900px;
-      min-height: 600px;
+      height: 650px;
+      margin: auto;
       background: #ead8c5;
       border: 8px solid #d1b69c;
       border-radius: 25px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 15px 40px rgba(80,60,40,0.15);
+      box-shadow: 0 15px 40px rgba(80,60,40,.15);
     }
 
     .title {
       text-align: center;
       padding: 25px;
-      font-size: 30px;
+      font-size: 32px;
       font-style: italic;
     }
 
     .object {
       position: absolute;
       cursor: pointer;
-      transition: 0.25s;
       text-align: center;
-      user-select: none;
+      transition: .25s;
     }
 
     .object:hover {
@@ -49,77 +53,427 @@
     .books {
       left: 8%;
       bottom: 15%;
-      font-size: 65px;
+      font-size: 70px;
     }
 
     .photos {
       right: 10%;
       top: 25%;
-      font-size: 65px;
+      font-size: 70px;
     }
 
     .music {
       left: 43%;
       bottom: 12%;
-      font-size: 65px;
+      font-size: 70px;
     }
 
     .bed {
       right: 7%;
       bottom: 8%;
-      font-size: 75px;
+      font-size: 80px;
     }
 
     .plant {
       left: 10%;
       top: 25%;
-      font-size: 65px;
+      font-size: 70px;
     }
 
     .hint {
       position: absolute;
-      bottom: 20px;
+      bottom: 18px;
       width: 100%;
       text-align: center;
+      opacity: .6;
+    }
+
+    /* BOOKSHELF */
+
+    .bookshelfPage {
+      display: none;
+      max-width: 950px;
+      margin: auto;
+    }
+
+    .back {
+      border: none;
+      background: #dfc9b3;
+      padding: 10px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      color: #4d4038;
+      font-size: 15px;
+    }
+
+    .bookshelfTitle {
+      text-align: center;
+      font-size: 35px;
+      font-style: italic;
+      margin: 25px 0;
+    }
+
+    .section {
+      background: #fffaf4;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(80,60,40,.08);
+    }
+
+    .section h2 {
+      margin-top: 0;
+    }
+
+    button {
+      border: none;
+      background: #d6bda5;
+      color: #4d4038;
+      padding: 10px 16px;
+      border-radius: 18px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover {
+      opacity: .8;
+    }
+
+    .booksGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .book {
+      background: #f5ebe0;
+      padding: 15px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .cover {
+      font-size: 55px;
+    }
+
+    .book h3 {
+      margin: 8px 0 4px;
+    }
+
+    .book p {
+      margin: 0 0 10px;
       font-size: 14px;
-      opacity: 0.65;
+      opacity: .7;
+    }
+
+    .empty {
+      opacity: .5;
+      font-style: italic;
     }
   </style>
 </head>
 
 <body>
 
-<div class="room">
+<div class="page">
 
-  <div class="title">
-    ✿ My Little World ✿
+  <!-- HOME -->
+
+  <div class="home" id="home">
+
+    <div class="title">
+      ✿ My Little World ✿
+    </div>
+
+    <div class="object books"
+         onclick="openBookshelf()">
+      📚
+    </div>
+
+    <div class="object photos"
+         onclick="alert('Photos coming next 🖼️')">
+      🖼️
+    </div>
+
+    <div class="object music"
+         onclick="alert('Music coming soon 🎧')">
+      🎧
+    </div>
+
+    <div class="object bed"
+         onclick="alert('Cozy Corner coming soon 🛏️')">
+      🛏️
+    </div>
+
+    <div class="object plant"
+         onclick="alert('Memories coming soon 🌱')">
+      🌱
+    </div>
+
+    <div class="hint">
+      ✨ Click something ✨
+    </div>
+
   </div>
 
-  <div class="object books" onclick="alert('Bookshelf 📚')">
-    📚
-  </div>
 
-  <div class="object photos" onclick="alert('Photos 🖼️')">
-    🖼️
-  </div>
+  <!-- BOOKSHELF -->
 
-  <div class="object music" onclick="alert('Music 🎧')">
-    🎧
-  </div>
+  <div class="bookshelfPage" id="bookshelfPage">
 
-  <div class="object bed" onclick="alert('Cozy Corner 🛏️')">
-    🛏️
-  </div>
+    <button class="back" onclick="goHome()">
+      ← Back to my room
+    </button>
 
-  <div class="object plant" onclick="alert('Memories 🌱')">
-    🌱
-  </div>
+    <div class="bookshelfTitle">
+      📚 My Bookshelf
+    </div>
 
-  <div class="hint">
-    ✨ Click the little objects ✨
+    <div id="sections"></div>
+
+    <div style="text-align:center;">
+      <button onclick="addSection()">
+        ＋ Add a section
+      </button>
+    </div>
+
   </div>
 
 </div>
+
+
+<script>
+
+  let sections = JSON.parse(
+    localStorage.getItem("myBookshelf")
+  ) || [
+    {
+      name: "♡ Favorites",
+      books: []
+    }
+  ];
+
+
+  function openBookshelf() {
+
+    document.getElementById("home").style.display = "none";
+
+    document.getElementById("bookshelfPage").style.display = "block";
+
+    renderSections();
+  }
+
+
+  function goHome() {
+
+    document.getElementById("bookshelfPage").style.display = "none";
+
+    document.getElementById("home").style.display = "block";
+  }
+
+
+  function save() {
+
+    localStorage.setItem(
+      "myBookshelf",
+      JSON.stringify(sections)
+    );
+
+  }
+
+
+  function addSection() {
+
+    let name = prompt(
+      "What do you want to call your new section?"
+    );
+
+    if (!name || !name.trim()) return;
+
+    sections.push({
+      name: name.trim(),
+      books: []
+    });
+
+    save();
+
+    renderSections();
+  }
+
+
+  function addBook(sectionIndex) {
+
+    let title = prompt("Book title:");
+
+    if (!title || !title.trim()) return;
+
+    let author = prompt("Author:");
+
+    if (!author || !author.trim()) {
+      author = "Unknown author";
+    }
+
+    sections[sectionIndex].books.push({
+      title: title.trim(),
+      author: author.trim()
+    });
+
+    save();
+
+    renderSections();
+  }
+
+
+  function deleteBook(sectionIndex, bookIndex) {
+
+    sections[sectionIndex].books.splice(bookIndex, 1);
+
+    save();
+
+    renderSections();
+  }
+
+
+  function deleteSection(sectionIndex) {
+
+    let sure = confirm(
+      "Delete this entire section?"
+    );
+
+    if (!sure) return;
+
+    sections.splice(sectionIndex, 1);
+
+    save();
+
+    renderSections();
+  }
+
+
+  function renderSections() {
+
+    let container =
+      document.getElementById("sections");
+
+    container.innerHTML = "";
+
+
+    sections.forEach(function(section, sectionIndex) {
+
+      let sectionDiv =
+        document.createElement("div");
+
+      sectionDiv.className = "section";
+
+
+      let heading =
+        document.createElement("h2");
+
+      heading.textContent = section.name;
+
+      sectionDiv.appendChild(heading);
+
+
+      let addButton =
+        document.createElement("button");
+
+      addButton.textContent = "＋ Add book";
+
+      addButton.onclick = function() {
+        addBook(sectionIndex);
+      };
+
+      sectionDiv.appendChild(addButton);
+
+
+      let deleteButton =
+        document.createElement("button");
+
+      deleteButton.textContent = "Delete section";
+
+      deleteButton.onclick = function() {
+        deleteSection(sectionIndex);
+      };
+
+      sectionDiv.appendChild(deleteButton);
+
+
+      let grid =
+        document.createElement("div");
+
+      grid.className = "booksGrid";
+
+
+      if (section.books.length === 0) {
+
+        let empty =
+          document.createElement("p");
+
+        empty.className = "empty";
+
+        empty.textContent =
+          "Your shelf is waiting for its first book ✨";
+
+        grid.appendChild(empty);
+
+      }
+
+
+      section.books.forEach(function(book, bookIndex) {
+
+        let bookDiv =
+          document.createElement("div");
+
+        bookDiv.className = "book";
+
+
+        bookDiv.innerHTML =
+          "📖" +
+          "<h3>" +
+          escapeHTML(book.title) +
+          "</h3>" +
+          "<p>" +
+          escapeHTML(book.author) +
+          "</p>";
+
+
+        let deleteButton =
+          document.createElement("button");
+
+        deleteButton.textContent = "Remove";
+
+        deleteButton.onclick = function() {
+          deleteBook(sectionIndex, bookIndex);
+        };
+
+        bookDiv.appendChild(deleteButton);
+
+        grid.appendChild(bookDiv);
+
+      });
+
+
+      sectionDiv.appendChild(grid);
+
+      container.appendChild(sectionDiv);
+
+    });
+
+  }
+
+
+  function escapeHTML(text) {
+
+    let div = document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+  }
+
+</script>
 
 </body>
 </html>
