@@ -4,171 +4,311 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>My Little Room ♡</title>
+<title>My Little World ♡</title>
 
 <style>
+
+/* =====================================================
+   BASIC
+===================================================== */
 
 *{
     box-sizing:border-box;
 }
 
-body{
-    margin:0;
-    font-family:Georgia,serif;
-    color:#4b3b35;
-    background:#e8ddd4;
+html{
+    scroll-behavior:smooth;
 }
 
-/* ================= ROOM ================= */
+body{
+    margin:0;
+    font-family:Georgia, "Times New Roman", serif;
+    color:#4d3b35;
+    background:#eee4dc;
+}
 
-.room{
+button{
+    font-family:inherit;
+}
+
+.hidden{
+    display:none !important;
+}
+
+
+/* =====================================================
+   ROOM
+===================================================== */
+
+#room{
+    width:100vw;
     height:100vh;
-    width:100%;
-    position:relative;
     overflow:hidden;
+    position:relative;
+
     background:
         linear-gradient(
-            #eee4db 0%,
-            #eee4db 68%,
-            #b89579 68%,
-            #b89579 100%
+            to bottom,
+            #eee5dc 0%,
+            #eee5dc 68%,
+            #b49378 68%,
+            #b49378 100%
         );
 }
 
 .wall{
     position:absolute;
     inset:0 0 32% 0;
+
     background-image:
-        radial-gradient(#d8c9bd 1px,transparent 1px);
+        radial-gradient(
+            #d7c8bd 1px,
+            transparent 1px
+        );
+
     background-size:25px 25px;
 }
 
-/* TITLE */
+
+/* =====================================================
+   ROOM TITLE
+===================================================== */
 
 .room-title{
     position:absolute;
-    top:25px;
+    top:24px;
     left:35px;
+
     font-size:28px;
     font-style:italic;
 }
 
-/* WINDOW */
+
+/* =====================================================
+   WINDOW
+===================================================== */
 
 .window{
     position:absolute;
+
+    width:180px;
+    height:220px;
+
     top:12%;
     left:7%;
-    width:180px;
-    height:210px;
-    border:12px solid #927565;
-    background:#a9c5c4;
-    box-shadow:0 10px 25px #765c4c33;
+
+    border:12px solid #907363;
+
+    background:#aec9c9;
+
+    box-shadow:
+        0 10px 25px #604b3b22;
 }
 
 .window:before{
     content:"";
+
     position:absolute;
+
     width:8px;
     height:100%;
-    background:#927565;
+
     left:50%;
+
+    background:#907363;
+
+    transform:translateX(-50%);
 }
 
 .window:after{
     content:"";
+
     position:absolute;
-    height:8px;
+
     width:100%;
-    background:#927565;
+    height:8px;
+
     top:50%;
+
+    background:#907363;
+
+    transform:translateY(-50%);
 }
 
 .moon{
     position:absolute;
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    background:#fff1c9;
-    top:20px;
+
+    width:48px;
+    height:48px;
+
     right:20px;
-    box-shadow:0 0 25px #fff1c9;
+    top:20px;
+
+    border-radius:50%;
+
+    background:#fff2c9;
+
+    box-shadow:
+        0 0 25px #fff2c9;
 }
 
-/* BED */
+
+/* =====================================================
+   STARS
+===================================================== */
+
+.star{
+    position:absolute;
+
+    color:#a58c7c;
+
+    font-size:20px;
+}
+
+.star1{
+    top:10%;
+    left:35%;
+}
+
+.star2{
+    top:32%;
+    left:42%;
+}
+
+.star3{
+    top:15%;
+    right:34%;
+}
+
+.star4{
+    top:43%;
+    right:15%;
+}
+
+
+/* =====================================================
+   BED
+===================================================== */
 
 .bed{
     position:absolute;
+
     width:38%;
     height:25%;
+
     right:6%;
     bottom:25%;
-    background:#96725f;
+
+    background:#96735f;
+
     border-radius:18px;
+
+    box-shadow:
+        8px 10px 20px #604b3b22;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.bed:hover{
+    transform:scale(1.02);
 }
 
 .mattress{
     position:absolute;
+
     width:96%;
     height:75%;
+
     top:-15%;
     left:2%;
-    background:#f4e8df;
+
+    background:#f5eae1;
+
     border-radius:15px;
 }
 
 .pillow{
     position:absolute;
+
     width:30%;
     height:35%;
-    top:3%;
+
     left:8%;
-    background:#fff9f3;
+    top:3%;
+
+    background:#fffaf4;
+
     border-radius:15px;
 }
 
 .blanket{
     position:absolute;
+
     width:55%;
     height:72%;
+
     right:0;
     top:0;
+
     background:#cbb0a5;
+
     border-radius:15px;
 }
 
-/* DESK */
+
+/* =====================================================
+   DESK
+===================================================== */
 
 .desk{
     position:absolute;
+
     width:37%;
     height:12%;
-    bottom:24%;
+
     left:5%;
-    background:#745541;
+    bottom:24%;
+
+    background:#755541;
+
     border-radius:10px;
 }
 
 .desk:after{
     content:"";
+
     position:absolute;
+
     width:7%;
     height:150%;
+
     left:8%;
     top:90%;
-    background:#5f4637;
-    box-shadow:300px 0 #5f4637;
+
+    background:#604637;
+
+    box-shadow:
+        300px 0 #604637;
 }
 
-/* LAPTOP */
+
+/* =====================================================
+   LAPTOP
+===================================================== */
 
 .laptop{
     position:absolute;
+
     width:25%;
     height:10%;
+
     left:11%;
     bottom:35%;
+
     cursor:pointer;
+
     transition:.3s;
 }
 
@@ -176,45 +316,66 @@ body{
     transform:scale(1.07);
 }
 
-.screen{
+.laptop-screen{
     position:absolute;
+
     width:100%;
     height:120%;
+
     bottom:45%;
+
     background:#30282c;
+
     border:8px solid #625456;
+
     border-radius:8px;
 }
 
-.screen span{
+.laptop-screen span{
     position:absolute;
+
     top:25%;
     left:45%;
-    font-size:32px;
+
     color:#efd8d5;
+
+    font-size:32px;
 }
 
 .laptop-base{
     position:absolute;
+
     width:110%;
     height:18%;
+
     bottom:25%;
     left:-5%;
+
     background:#917b78;
+
     border-radius:5px 5px 12px 12px;
 }
 
-/* BOOKSHELF */
+
+/* =====================================================
+   BOOKSHELF
+===================================================== */
 
 .bookshelf{
     position:absolute;
+
     width:16%;
     height:43%;
+
     left:50%;
     top:14%;
-    background:#856451;
+
     padding:10px;
+
+    background:#856451;
+
     cursor:pointer;
+
     transition:.3s;
 }
 
@@ -224,16 +385,21 @@ body{
 
 .shelf-row{
     height:27%;
+
     margin-bottom:8%;
-    border-bottom:7px solid #614737;
+
+    border-bottom:7px solid #604637;
+
     display:flex;
     align-items:end;
+
     gap:5px;
 }
 
 .book{
     width:18%;
     height:80%;
+
     background:#c9aaa0;
 }
 
@@ -247,14 +413,21 @@ body{
     background:#d8c4ac;
 }
 
-/* HEADPHONES */
+
+/* =====================================================
+   HEADPHONES
+===================================================== */
 
 .headphones{
     position:absolute;
+
     left:28%;
     bottom:38%;
+
     font-size:55px;
+
     cursor:pointer;
+
     transition:.3s;
 }
 
@@ -262,14 +435,21 @@ body{
     transform:scale(1.1);
 }
 
-/* PLANT */
+
+/* =====================================================
+   PLANT
+===================================================== */
 
 .plant{
     position:absolute;
+
     right:45%;
     bottom:25%;
+
     font-size:60px;
+
     cursor:pointer;
+
     transition:.3s;
 }
 
@@ -277,12 +457,17 @@ body{
     transform:rotate(5deg) scale(1.1);
 }
 
-/* PHOTOS */
+
+/* =====================================================
+   WALL PHOTOS
+===================================================== */
 
 .wall-photos{
     position:absolute;
+
     right:8%;
     top:10%;
+
     display:flex;
     gap:15px;
 }
@@ -290,11 +475,16 @@ body{
 .photo-frame{
     width:85px;
     height:105px;
-    background:#fffaf4;
+
     padding:7px;
+
+    background:#fffaf4;
+
     box-shadow:3px 5px 15px #0002;
-    transform:rotate(-5deg);
+
     cursor:pointer;
+
+    transform:rotate(-5deg);
 }
 
 .photo-frame:nth-child(2){
@@ -304,243 +494,500 @@ body{
 .photo-inside{
     width:100%;
     height:75%;
+
     background:#d4b8aa;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     font-size:32px;
 }
 
-/* RUG */
+
+/* =====================================================
+   RUG
+===================================================== */
 
 .rug{
     position:absolute;
+
     width:45%;
     height:15%;
-    bottom:5%;
+
     left:27%;
+    bottom:5%;
+
     background:#d4b6a2;
+
     border-radius:50%;
-    box-shadow:inset 0 0 0 8px #c19d87;
+
+    box-shadow:
+        inset 0 0 0 8px #c19d87;
 }
 
-/* ================= BUTTON ================= */
 
-.room-object{
-    cursor:pointer;
-}
+/* =====================================================
+   COLLECTION PAGE
+===================================================== */
 
-/* ================= POPUP ================= */
-
-.overlay{
-    position:fixed;
-    inset:0;
-    background:#3d302d99;
+#collectionPage{
     display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:100;
-    padding:20px;
-}
 
-.popup{
-    background:#fff8f1;
-    width:min(90%,420px);
-    padding:30px;
-    border-radius:25px;
-    text-align:center;
-    box-shadow:0 20px 60px #0004;
-}
-
-.popup h2{
-    margin-top:0;
-}
-
-.popup button{
-    border:0;
-    padding:10px 20px;
-    border-radius:20px;
-    background:#ad8c7c;
-    color:white;
-    cursor:pointer;
-}
-
-/* ================= PHOTOS PAGE ================= */
-
-.photos-page{
-    display:none;
     min-height:100vh;
-    background:#f4ebe3;
+
+    background:#f5ece5;
+
     padding:25px;
 }
 
-.back{
-    border:0;
-    background:#c3a395;
-    color:white;
-    padding:10px 18px;
-    border-radius:20px;
-    cursor:pointer;
-}
-
-.photos-header{
-    text-align:center;
-    margin:15px 0 25px;
-}
-
-.photos-header h1{
-    font-size:38px;
-    margin:5px;
-}
-
-.photos-header p{
-    color:#806d65;
-}
-
-/* CATEGORY BAR */
-
-.categories{
+.collection-top{
     display:flex;
-    gap:10px;
-    overflow-x:auto;
-    padding:10px 5px 20px;
-}
 
-.category{
-    flex-shrink:0;
-    border:0;
-    background:#e1cec4;
-    color:#5d4b44;
-    padding:10px 18px;
-    border-radius:25px;
-    cursor:pointer;
-}
+    align-items:center;
 
-.category.active{
-    background:#987769;
-    color:white;
-}
+    gap:15px;
 
-.add-category{
-    flex-shrink:0;
-    border:2px dashed #ad9081;
-    background:transparent;
-    color:#795f54;
-    padding:9px 18px;
-    border-radius:25px;
-    cursor:pointer;
-}
-
-/* UPLOAD */
-
-.upload-area{
-    display:flex;
-    justify-content:center;
-    margin-bottom:25px;
-}
-
-.upload-button{
-    background:#927466;
-    color:white;
-    padding:12px 22px;
-    border-radius:25px;
-    cursor:pointer;
-}
-
-#fileInput{
-    display:none;
-}
-
-/* MASONRY */
-
-.gallery{
-    columns:4 180px;
-    column-gap:16px;
     max-width:1200px;
+
     margin:auto;
 }
 
-.pin{
-    break-inside:avoid;
-    margin-bottom:16px;
-    position:relative;
+.back-button,
+.add-section-button,
+.add-item-button,
+.small-button{
+    border:0;
+
+    background:#a98a7b;
+
+    color:white;
+
+    padding:10px 18px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.back-button:hover,
+.add-section-button:hover,
+.add-item-button:hover,
+.small-button:hover{
+    transform:translateY(-2px);
+    background:#927466;
+}
+
+
+/* =====================================================
+   COLLECTION HEADER
+===================================================== */
+
+.collection-header{
+    max-width:900px;
+
+    margin:30px auto;
+
+    text-align:center;
+}
+
+.collection-header h1{
+    font-size:42px;
+
+    margin:10px 0;
+}
+
+.collection-header p{
+    color:#806c63;
+}
+
+
+/* =====================================================
+   SECTION BAR
+===================================================== */
+
+.section-bar{
+    max-width:1200px;
+
+    margin:20px auto;
+
+    display:flex;
+
+    gap:10px;
+
+    overflow-x:auto;
+
+    padding:5px;
+}
+
+.section-button{
+    flex-shrink:0;
+
+    border:0;
+
+    padding:11px 20px;
+
+    border-radius:25px;
+
+    background:#e1cec4;
+
+    color:#5c4b44;
+
     cursor:pointer;
 }
 
-.pin img{
+.section-button.active{
+    background:#947365;
+
+    color:white;
+}
+
+.delete-section{
+    flex-shrink:0;
+
+    border:2px dashed #ad9081;
+
+    background:transparent;
+
+    color:#765e53;
+
+    padding:9px 17px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   ITEMS
+===================================================== */
+
+.items-container{
+    max-width:1200px;
+
+    margin:30px auto;
+}
+
+
+/* PHOTO / CARD MASONRY */
+
+.photo-grid{
+    columns:4 180px;
+
+    column-gap:16px;
+}
+
+.photo-card{
+    break-inside:avoid;
+
+    margin-bottom:16px;
+
+    position:relative;
+
+    cursor:pointer;
+}
+
+.photo-card img{
     width:100%;
+
     display:block;
-    border-radius:16px;
+
+    border-radius:17px;
+
     transition:.25s;
 }
 
-.pin img:hover{
+.photo-card img:hover{
     transform:scale(1.015);
 }
 
-.delete{
-    position:absolute;
-    top:8px;
-    right:8px;
-    border:0;
-    background:#ffffffdd;
-    border-radius:50%;
-    width:32px;
-    height:32px;
+
+/* BOOK GRID */
+
+.book-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fill,minmax(180px,1fr));
+
+    gap:20px;
+}
+
+.book-card{
+    background:#fffaf5;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    box-shadow:0 5px 20px #0001;
+
     cursor:pointer;
-    display:none;
+
+    transition:.25s;
 }
 
-.pin:hover .delete{
-    display:block;
+.book-card:hover{
+    transform:translateY(-5px);
 }
 
-.empty{
-    text-align:center;
-    padding:60px 20px;
-    color:#8c776d;
-}
+.book-cover{
+    height:230px;
 
-/* IMAGE VIEWER */
+    border-radius:12px;
 
-.viewer{
-    position:fixed;
-    inset:0;
-    background:#201a19ee;
-    display:none;
+    background:#d5b8aa;
+
+    display:flex;
+
     align-items:center;
+
     justify-content:center;
-    z-index:200;
+
+    font-size:50px;
+
+    margin-bottom:12px;
+}
+
+.book-title{
+    font-size:18px;
+
+    font-weight:bold;
+}
+
+.book-author{
+    color:#89756c;
+
+    margin-top:5px;
+
+    font-size:14px;
+}
+
+
+/* GENERIC CARD */
+
+.card-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fill,minmax(190px,1fr));
+
+    gap:18px;
+}
+
+.generic-card{
+    background:#fffaf5;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 20px #0001;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.generic-card:hover{
+    transform:translateY(-5px);
+}
+
+.generic-icon{
+    font-size:45px;
+
+    margin-bottom:12px;
+}
+
+.generic-title{
+    font-size:19px;
+
+    font-weight:bold;
+}
+
+.generic-description{
+    color:#8a766d;
+
+    margin-top:7px;
+
+    font-size:14px;
+}
+
+
+/* =====================================================
+   ADD ITEM FORM
+===================================================== */
+
+.form-overlay{
+    position:fixed;
+
+    inset:0;
+
+    background:#3c2f2b99;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    z-index:300;
+}
+
+.form-box{
+    width:min(95%,480px);
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#fff8f1;
+
+    border-radius:25px;
+
+    padding:30px;
+
+    box-shadow:0 20px 60px #0004;
+}
+
+.form-box h2{
+    margin-top:0;
+}
+
+.form-box label{
+    display:block;
+
+    margin-top:15px;
+
+    margin-bottom:6px;
+
+    font-size:14px;
+}
+
+.form-box input,
+.form-box textarea,
+.form-box select{
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #d7c5bb;
+
+    border-radius:12px;
+
+    background:white;
+
+    font-family:inherit;
+}
+
+.form-buttons{
+    display:flex;
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+.cancel-button{
+    border:0;
+
+    padding:10px 18px;
+
+    border-radius:20px;
+
+    background:#dfcec4;
+
+    color:#5d4c44;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.empty-state{
+    text-align:center;
+
+    padding:70px 20px;
+
+    color:#8a766d;
+}
+
+.empty-state h2{
+    color:#625149;
+}
+
+
+/* =====================================================
+   IMAGE VIEWER
+===================================================== */
+
+#imageViewer{
+    position:fixed;
+
+    inset:0;
+
+    background:#211b19ee;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:500;
+
     padding:20px;
 }
 
-.viewer img{
+#imageViewer img{
     max-width:90%;
+
     max-height:90%;
+
     object-fit:contain;
+
     border-radius:15px;
 }
 
 .close-viewer{
     position:absolute;
+
     top:20px;
     right:25px;
-    background:white;
+
+    width:42px;
+    height:42px;
+
     border:0;
-    width:40px;
-    height:40px;
+
     border-radius:50%;
-    font-size:20px;
+
+    background:white;
+
+    font-size:22px;
+
     cursor:pointer;
 }
 
-/* MOBILE */
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:700px){
 
     .room-title{
+        left:18px;
+        top:18px;
         font-size:21px;
-        left:20px;
     }
 
     .window{
@@ -580,36 +1027,58 @@ body{
         font-size:45px;
     }
 
+    .collection-header h1{
+        font-size:30px;
+    }
+
+    #collectionPage{
+        padding:18px;
+    }
+
+    .photo-grid{
+        columns:2 130px;
+    }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
 
-<!-- ================================================= -->
-<!-- ROOM -->
-<!-- ================================================= -->
+<!-- =====================================================
+     ROOM
+===================================================== -->
 
-<div class="room" id="room">
+<div id="room">
 
     <div class="wall"></div>
 
+
     <div class="room-title">
-        my little corner ♡
+        my little world ♡
     </div>
+
 
     <div class="window">
         <div class="moon"></div>
     </div>
+
+
+    <div class="star star1">✦</div>
+    <div class="star star2">✧</div>
+    <div class="star star3">✦</div>
+    <div class="star star4">✧</div>
+
 
     <!-- WALL PHOTOS -->
 
     <div class="wall-photos">
 
         <div class="photo-frame"
-             onclick="openPhotos()">
+             onclick="openCollection('photos')">
 
             <div class="photo-inside">
                 🌷
@@ -617,8 +1086,9 @@ body{
 
         </div>
 
+
         <div class="photo-frame"
-             onclick="openPhotos()">
+             onclick="openCollection('photos')">
 
             <div class="photo-inside">
                 ☁️
@@ -632,10 +1102,7 @@ body{
     <!-- BOOKSHELF -->
 
     <div class="bookshelf"
-         onclick="showPopup(
-         'Bookshelf 📚',
-         'This can become your personal book collection!'
-         )">
+         onclick="openCollection('books')">
 
         <div class="shelf-row">
             <div class="book"></div>
@@ -659,7 +1126,8 @@ body{
 
     <!-- BED -->
 
-    <div class="bed">
+    <div class="bed"
+         onclick="openCollection('bed')">
 
         <div class="mattress"></div>
 
@@ -670,11 +1138,6 @@ body{
     </div>
 
 
-    <!-- RUG -->
-
-    <div class="rug"></div>
-
-
     <!-- DESK -->
 
     <div class="desk"></div>
@@ -683,12 +1146,9 @@ body{
     <!-- LAPTOP -->
 
     <div class="laptop"
-         onclick="showPopup(
-         'Laptop 💻',
-         'A little place for your digital world.'
-         )">
+         onclick="openCollection('laptop')">
 
-        <div class="screen">
+        <div class="laptop-screen">
             <span>♡</span>
         </div>
 
@@ -700,10 +1160,7 @@ body{
     <!-- HEADPHONES -->
 
     <div class="headphones"
-         onclick="showPopup(
-         'Music 🎧',
-         'Your music corner could live here!'
-         )">
+         onclick="openCollection('music')">
 
         🎧
 
@@ -713,139 +1170,198 @@ body{
     <!-- PLANT -->
 
     <div class="plant"
-         onclick="showPopup(
-         'Little Plant 🌱',
-         'Take a little break. You deserve one ♡'
-         )">
+         onclick="openCollection('journal')">
 
         🪴
 
     </div>
 
+
+    <!-- RUG -->
+
+    <div class="rug"></div>
+
 </div>
 
 
 
-<!-- ================================================= -->
-<!-- PHOTOS PAGE -->
-<!-- ================================================= -->
+<!-- =====================================================
+     COLLECTION PAGE
+===================================================== -->
 
-<div class="photos-page" id="photosPage">
+<div id="collectionPage">
 
-    <button class="back" onclick="closePhotos()">
-        ← back to room
-    </button>
+    <div class="collection-top">
+
+        <button class="back-button"
+                onclick="goHome()">
+
+            ← Room
+
+        </button>
+
+    </div>
 
 
-    <div class="photos-header">
+    <div class="collection-header">
 
-        <h1>my photo world ♡</h1>
+        <h1 id="collectionTitle">
+            My Collection
+        </h1>
 
-        <p>
-            save all the little things you love
+        <p id="collectionSubtitle">
+            Make this space yours ♡
         </p>
 
     </div>
 
 
-    <!-- CATEGORIES -->
+    <!-- SECTIONS -->
 
-    <div class="categories" id="categories">
+    <div class="section-bar"
+         id="sectionBar">
+    </div>
 
-        <button class="category active"
-                onclick="selectCategory('Aesthetic',this)">
-            ✨ Aesthetic
-        </button>
 
-        <button class="category"
-                onclick="selectCategory('Nature',this)">
-            🌿 Nature
-        </button>
+    <div style="text-align:center">
 
-        <button class="category"
-                onclick="selectCategory('Anime',this)">
-            🎌 Anime
-        </button>
+        <button class="add-section-button"
+                onclick="addSection()">
 
-        <button class="category"
-                onclick="selectCategory('Food',this)">
-            🍰 Food
-        </button>
-
-        <button class="category"
-                onclick="selectCategory('Travel',this)">
-            ✈️ Travel
-        </button>
-
-        <button class="add-category"
-                onclick="addCategory()">
             ＋ Add section
+
+        </button>
+
+        <button class="add-item-button"
+                onclick="openAddItem()">
+
+            ＋ Add item
+
         </button>
 
     </div>
 
 
-    <!-- UPLOAD -->
+    <!-- ITEMS -->
 
-    <div class="upload-area">
+    <div class="items-container"
+         id="itemsContainer">
+    </div>
 
-        <label class="upload-button">
+</div>
 
-            ＋ Add pictures
 
-            <input
-                id="fileInput"
-                type="file"
-                accept="image/*"
-                multiple
-                onchange="uploadImages(event)"
-            >
 
+<!-- =====================================================
+     ADD ITEM FORM
+===================================================== -->
+
+<div class="form-overlay"
+     id="itemForm">
+
+    <div class="form-box">
+
+        <h2 id="formTitle">
+            Add something ♡
+        </h2>
+
+
+        <label>
+            Name
         </label>
 
+        <input
+            id="itemName"
+            type="text"
+            placeholder="e.g. The Little Prince"
+        >
+
+
+        <label>
+            Description / Author
+        </label>
+
+        <input
+            id="itemDescription"
+            type="text"
+            placeholder="optional"
+        >
+
+
+        <div id="imageField">
+
+            <label>
+                Picture
+            </label>
+
+            <input
+                id="itemImage"
+                type="file"
+                accept="image/*"
+            >
+
+        </div>
+
+
+        <div id="iconField">
+
+            <label>
+                Choose an icon
+            </label>
+
+            <select id="itemIcon">
+
+                <option>♡</option>
+                <option>🌷</option>
+                <option>🌿</option>
+                <option>🎧</option>
+                <option>🎬</option>
+                <option>📖</option>
+                <option>☁️</option>
+                <option>⭐</option>
+                <option>🎀</option>
+                <option>🌙</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-buttons">
+
+            <button class="small-button"
+                    onclick="saveItem()">
+
+                Save ♡
+
+            </button>
+
+            <button class="cancel-button"
+                    onclick="closeForm()">
+
+                Cancel
+
+            </button>
+
+        </div>
+
     </div>
-
-
-    <!-- GALLERY -->
-
-    <div class="gallery" id="gallery"></div>
 
 </div>
 
 
 
-<!-- ================================================= -->
-<!-- POPUP -->
-<!-- ================================================= -->
+<!-- =====================================================
+     IMAGE VIEWER
+===================================================== -->
 
-<div class="overlay" id="overlay">
+<div id="imageViewer">
 
-    <div class="popup">
+    <button class="close-viewer"
+            onclick="closeViewer()">
 
-        <h2 id="popupTitle"></h2>
-
-        <p id="popupText"></p>
-
-        <button onclick="closePopup()">
-            close ♡
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<!-- ================================================= -->
-<!-- IMAGE VIEWER -->
-<!-- ================================================= -->
-
-<div class="viewer" id="viewer">
-
-    <button
-        class="close-viewer"
-        onclick="closeViewer()">
         ×
+
     </button>
 
     <img id="viewerImage">
@@ -856,370 +1372,66 @@ body{
 
 <script>
 
-/* ================================================= */
-/* BASIC POPUP */
-/* ================================================= */
-
-function showPopup(title,text){
-
-    document.getElementById("popupTitle").innerText = title;
-
-    document.getElementById("popupText").innerText = text;
-
-    document.getElementById("overlay").style.display = "flex";
-}
-
-function closePopup(){
-
-    document.getElementById("overlay").style.display = "none";
-}
-
-
-
-/* ================================================= */
-/* PHOTOS PAGE */
-/* ================================================= */
-
-function openPhotos(){
-
-    document.getElementById("room").style.display = "none";
-
-    document.getElementById("photosPage").style.display = "block";
-
-    renderGallery();
-
-}
-
-function closePhotos(){
-
-    document.getElementById("photosPage").style.display = "none";
-
-    document.getElementById("room").style.display = "block";
-
-}
-
-
-
-/* ================================================= */
-/* CATEGORIES */
-/* ================================================= */
-
-let currentCategory = "Aesthetic";
-
-let categories =
-JSON.parse(localStorage.getItem("myCategories")) || [
-    "Aesthetic",
-    "Nature",
-    "Anime",
-    "Food",
-    "Travel"
-];
-
-
-function saveCategories(){
-
-    localStorage.setItem(
-        "myCategories",
-        JSON.stringify(categories)
-    );
-
-}
-
-
-function addCategory(){
-
-    let name = prompt(
-        "What do you want to call your new section?"
-    );
-
-    if(!name) return;
-
-    name = name.trim();
-
-    if(!name) return;
-
-    if(categories.includes(name)){
-
-        alert("That section already exists!");
-
-        return;
-
-    }
-
-    categories.push(name);
-
-    saveCategories();
-
-    renderCategories();
-
-    currentCategory = name;
-
-    renderGallery();
-
-}
-
-
-function renderCategories(){
-
-    const container =
-        document.getElementById("categories");
-
-    container.innerHTML = "";
-
-    categories.forEach(category => {
-
-        const button =
-            document.createElement("button");
-
-        button.className =
-            "category";
-
-        if(category === currentCategory){
-
-            button.classList.add("active");
-
-        }
-
-        button.innerText =
-            "♡ " + category;
-
-        button.onclick = function(){
-
-            selectCategory(category,button);
-
-        };
-
-        container.appendChild(button);
-
-    });
-
-
-    const add =
-        document.createElement("button");
-
-    add.className =
-        "add-category";
-
-    add.innerText =
-        "＋ Add section";
-
-    add.onclick =
-        addCategory;
-
-    container.appendChild(add);
-
-}
-
-
-function selectCategory(category,button){
-
-    currentCategory = category;
-
-    document
-        .querySelectorAll(".category")
-        .forEach(b => b.classList.remove("active"));
-
-    button.classList.add("active");
-
-    renderGallery();
-
-}
-
-
-
-/* ================================================= */
-/* IMAGE STORAGE */
-/* ================================================= */
-
-let images =
-JSON.parse(localStorage.getItem("myRoomImages")) || {};
-
-
-function saveImages(){
-
-    localStorage.setItem(
-        "myRoomImages",
-        JSON.stringify(images)
-    );
-
-}
-
-
-
-/* ================================================= */
-/* UPLOAD */
-/* ================================================= */
-
-function uploadImages(event){
-
-    const files =
-        Array.from(event.target.files);
-
-    if(!images[currentCategory]){
-
-        images[currentCategory] = [];
-
-    }
-
-
-    files.forEach(file => {
-
-        const reader =
-            new FileReader();
-
-        reader.onload = function(e){
-
-            images[currentCategory].push(
-                e.target.result
-            );
-
-            saveImages();
-
-            renderGallery();
-
-        };
-
-        reader.readAsDataURL(file);
-
-    });
-
-
-    event.target.value = "";
-
-}
-
-
-
-/* ================================================= */
-/* GALLERY */
-/* ================================================= */
-
-function renderGallery(){
-
-    const gallery =
-        document.getElementById("gallery");
-
-    gallery.innerHTML = "";
-
-
-    const list =
-        images[currentCategory] || [];
-
-
-    if(list.length === 0){
-
-        gallery.innerHTML = `
-            <div class="empty">
-                <h2>Nothing here yet ♡</h2>
-                <p>
-                    Add some pictures to your
-                    ${currentCategory} collection.
-                </p>
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    list.forEach((src,index) => {
-
-        const pin =
-            document.createElement("div");
-
-        pin.className = "pin";
-
-
-        const img =
-            document.createElement("img");
-
-        img.src = src;
-
-
-        img.onclick = function(){
-
-            openViewer(src);
-
-        };
-
-
-        const deleteButton =
-            document.createElement("button");
-
-        deleteButton.className = "delete";
-
-        deleteButton.innerText = "×";
-
-
-        deleteButton.onclick = function(event){
-
-            event.stopPropagation();
-
-            if(
-                confirm(
-                    "Delete this picture?"
-                )
-            ){
-
-                images[currentCategory]
-                    .splice(index,1);
-
-                saveImages();
-
-                renderGallery();
-
-            }
-
-        };
-
-
-        pin.appendChild(img);
-
-        pin.appendChild(deleteButton);
-
-        gallery.appendChild(pin);
-
-    });
-
-}
-
-
-
-/* ================================================= */
-/* IMAGE VIEWER */
-/* ================================================= */
-
-function openViewer(src){
-
-    document.getElementById(
-        "viewerImage"
-    ).src = src;
-
-    document.getElementById(
-        "viewer"
-    ).style.display = "flex";
-
-}
-
-
-function closeViewer(){
-
-    document.getElementById(
-        "viewer"
-    ).style.display = "none";
-
-}
-
-
-
-/* ================================================= */
-/* LOAD */
-/* ================================================= */
-
-renderCategories();
-
-</script>
-
-</body>
-</html>
+/* =====================================================
+   COLLECTION CONFIG
+===================================================== */
+
+const collectionInfo = {
+
+    photos:{
+        title:"Photos ♡",
+        subtitle:"Collect all the little things you love.",
+        type:"photo",
+        sections:[
+            "Aesthetic",
+            "Nature",
+            "Anime"
+        ]
+    },
+
+    books:{
+        title:"My Bookshelf 📚",
+        subtitle:"Your personal collection of favorite books.",
+        type:"book",
+        sections:[
+            "Favorites",
+            "Currently Reading",
+            "Want to Read"
+        ]
+    },
+
+    music:{
+        title:"My Music 🎧",
+        subtitle:"Keep your favorite sounds here.",
+        type:"generic",
+        sections:[
+            "Favorite Songs",
+            "Playlists"
+        ]
+    },
+
+    bed:{
+        title:"Cozy Corner 🛏️",
+        subtitle:"Movies, shows and all your comfort things.",
+        type:"generic",
+        sections:[
+            "Movies",
+            "Shows",
+            "Comfort"
+        ]
+    },
+
+    laptop:{
+        title:"My Laptop 💻",
+        subtitle:"Your own little digital collection.",
+        type:"generic",
+        sections:[
+            "Favorites",
+            "Websites",
+            "Things I Love"
+        ]
+    },
+
+    journal:{
+        title:"Little Garden 🌱",
+        
