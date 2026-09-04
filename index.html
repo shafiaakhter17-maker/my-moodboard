@@ -1,477 +1,887 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Little World</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Little World 🌷</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Quicksand:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: #f7efe5;
+    color: #493b35;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* HOME */
+
+#home {
+    min-height: 100vh;
+    padding: 35px 20px;
+    background:
+        radial-gradient(circle at 15% 15%, #ead8c8 0 4%, transparent 5%),
+        radial-gradient(circle at 85% 25%, #ead8c8 0 3%, transparent 4%),
+        #f7efe5;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 58px;
+    margin: 0;
+    color: #604b43;
+}
+
+.title p {
+    margin-top: 5px;
+    color: #92786c;
+}
+
+.room {
+    max-width: 1100px;
+    min-height: 650px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    background: #ead8c8;
+    box-shadow: 0 20px 50px rgba(80,55,40,.15);
+}
+
+/* WALL */
+
+.wall {
+    height: 480px;
+    position: relative;
+    background: linear-gradient(#e9d7c8 0 78%, #c99e78 78%);
+}
+
+/* WINDOW */
+
+.window {
+    position: absolute;
+    left: 8%;
+    top: 55px;
+    width: 190px;
+    height: 170px;
+    background: #b8d1d5;
+    border: 12px solid #fff7ef;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(80,55,40,.15);
+}
+
+.window:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 7px;
+    background: #fff7ef;
+}
+
+.window:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 48%;
+    width: 100%;
+    height: 7px;
+    background: #fff7ef;
+}
+
+/* SUN */
+
+.sun {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #f3cf82;
+    right: 25px;
+    top: 20px;
+}
+
+/* OBJECTS */
+
+.object {
+    position: absolute;
+    border: 0;
+    background: transparent;
+    color: #4f3e36;
+    text-align: center;
+    transition: .25s;
+}
+
+.object:hover {
+    transform: translateY(-8px) scale(1.05);
+}
+
+.object .emoji {
+    display: block;
+    font-size: 65px;
+    filter: drop-shadow(0 8px 5px rgba(0,0,0,.12));
+}
+
+.object span:last-child {
+    display: block;
+    margin-top: 5px;
+    font-weight: 600;
+    background: rgba(255,250,245,.8);
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+/* OBJECT POSITIONS */
+
+.books {
+    left: 7%;
+    bottom: 65px;
+}
+
+.music {
+    left: 34%;
+    top: 260px;
+}
+
+.movies {
+    right: 7%;
+    top: 80px;
+}
+
+.memories {
+    right: 33%;
+    top: 55px;
+}
+
+.favorites {
+    left: 53%;
+    bottom: 45px;
+}
+
+.diary {
+    right: 7%;
+    bottom: 45px;
+}
+
+/* DESK */
+
+.desk {
+    position: absolute;
+    bottom: 0;
+    left: 28%;
+    width: 45%;
+    height: 95px;
+    background: #9a6e50;
+    border-radius: 15px 15px 0 0;
+}
+
+.desk:before,
+.desk:after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 100px;
+    background: #79543f;
+    top: 80px;
+}
+
+.desk:before {
+    left: 20px;
+}
+
+.desk:after {
+    right: 20px;
+}
+
+/* PLANT */
+
+.plant {
+    position: absolute;
+    bottom: 70px;
+    right: 22%;
+    font-size: 60px;
+}
+
+/* FLOOR */
+
+.floor {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    background: #b98c69;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(50,35,28,.5);
+    z-index: 100;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    width: min(700px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fffaf5;
+    border-radius: 25px;
+    padding: 28px;
+    box-shadow: 0 25px 70px rgba(0,0,0,.25);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    margin: 0;
+}
+
+.close {
+    border: 0;
+    background: #ead8c8;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+/* COLLECTION */
+
+.collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-btn {
+    border: 0;
+    background: #8c6b5b;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.add-btn:hover {
+    background: #705347;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #f5e9dd;
+    border-radius: 18px;
+    padding: 12px;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+.card h3 {
+    margin: 10px 3px 3px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+}
+
+.card p {
+    margin: 3px;
+    font-size: 13px;
+    color: #806b61;
+}
+
+.delete {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,.9);
+}
+
+.empty {
+    text-align: center;
+    padding: 35px;
+    color: #9a8176;
+}
+
+/* FORM */
+
+.form {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 18px;
+    background: #f5e9dd;
+}
+
+.form.show {
+    display: block;
+}
+
+.form label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form input,
+.form textarea,
+.form select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #dbc6b6;
+    border-radius: 12px;
+    background: #fffaf5;
+    font-family: inherit;
+    outline: none;
+}
+
+.form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.save {
+    margin-top: 18px;
+    border: 0;
+    background: #8c6b5b;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.preview {
+    width: 100px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: none;
+}
+
+/* BACK BUTTON */
+
+.back {
+    border: 0;
+    background: #ead8c8;
+    padding: 10px 17px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .title h1 {
+        font-size: 44px;
     }
 
-    body {
-      margin: 0;
-      font-family: Georgia, serif;
-      background: #f5efe6;
-      color: #4d4038;
+    .room {
+        min-height: 650px;
     }
 
-    .page {
-      min-height: 100vh;
-      padding: 25px;
+    .wall {
+        height: 650px;
     }
 
-    .home {
-      max-width: 900px;
-      height: 650px;
-      margin: auto;
-      background: #ead8c5;
-      border: 8px solid #d1b69c;
-      border-radius: 25px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 15px 40px rgba(80,60,40,.15);
-    }
-
-    .title {
-      text-align: center;
-      padding: 25px;
-      font-size: 32px;
-      font-style: italic;
-    }
-
-    .object {
-      position: absolute;
-      cursor: pointer;
-      text-align: center;
-      transition: .25s;
-    }
-
-    .object:hover {
-      transform: scale(1.08);
+    .window {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: 135px;
     }
 
     .books {
-      left: 8%;
-      bottom: 15%;
-      font-size: 70px;
-    }
-
-    .photos {
-      right: 10%;
-      top: 25%;
-      font-size: 70px;
+        left: 5%;
+        bottom: 110px;
     }
 
     .music {
-      left: 43%;
-      bottom: 12%;
-      font-size: 70px;
+        left: 38%;
+        top: 250px;
     }
 
-    .bed {
-      right: 7%;
-      bottom: 8%;
-      font-size: 80px;
+    .movies {
+        right: 3%;
+        top: 360px;
+    }
+
+    .memories {
+        left: 5%;
+        top: 330px;
+    }
+
+    .favorites {
+        left: 40%;
+        bottom: 30px;
+    }
+
+    .diary {
+        right: 3%;
+        bottom: 100px;
+    }
+
+    .object .emoji {
+        font-size: 48px;
+    }
+
+    .desk {
+        display: none;
     }
 
     .plant {
-      left: 10%;
-      top: 25%;
-      font-size: 70px;
+        display: none;
     }
-
-    .hint {
-      position: absolute;
-      bottom: 18px;
-      width: 100%;
-      text-align: center;
-      opacity: .6;
-    }
-
-    /* BOOKSHELF */
-
-    .bookshelfPage {
-      display: none;
-      max-width: 950px;
-      margin: auto;
-    }
-
-    .back {
-      border: none;
-      background: #dfc9b3;
-      padding: 10px 18px;
-      border-radius: 20px;
-      cursor: pointer;
-      color: #4d4038;
-      font-size: 15px;
-    }
-
-    .bookshelfTitle {
-      text-align: center;
-      font-size: 35px;
-      font-style: italic;
-      margin: 25px 0;
-    }
-
-    .section {
-      background: #fffaf4;
-      padding: 20px;
-      margin-bottom: 25px;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(80,60,40,.08);
-    }
-
-    .section h2 {
-      margin-top: 0;
-    }
-
-    button {
-      border: none;
-      background: #d6bda5;
-      color: #4d4038;
-      padding: 10px 16px;
-      border-radius: 18px;
-      cursor: pointer;
-      margin: 5px;
-    }
-
-    button:hover {
-      opacity: .8;
-    }
-
-    .booksGrid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 15px;
-      margin-top: 15px;
-    }
-
-    .book {
-      background: #f5ebe0;
-      padding: 15px;
-      border-radius: 15px;
-      text-align: center;
-    }
-
-    .cover {
-      font-size: 55px;
-    }
-
-    .book h3 {
-      margin: 8px 0 4px;
-    }
-
-    .book p {
-      margin: 0 0 10px;
-      font-size: 14px;
-      opacity: .7;
-    }
-
-    .empty {
-      opacity: .5;
-      font-style: italic;
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-<div class="page">
+<!-- HOME -->
 
-  <!-- HOME -->
-
-  <div class="home" id="home">
+<section id="home">
 
     <div class="title">
-      ✿ My Little World ✿
+        <h1>my little world 🌷</h1>
+        <p>a tiny corner of the internet that belongs to me</p>
     </div>
 
-    <div class="object books"
-         onclick="openBookshelf()">
-      📚
+    <div class="room">
+
+        <div class="wall">
+
+            <div class="window">
+                <div class="sun"></div>
+            </div>
+
+            <button class="object books" onclick="openCollection('books')">
+                <span class="emoji">📚</span>
+                <span>Bookshelf</span>
+            </button>
+
+            <button class="object music" onclick="openCollection('music')">
+                <span class="emoji">🎧</span>
+                <span>Music</span>
+            </button>
+
+            <button class="object movies" onclick="openCollection('movies')">
+                <span class="emoji">🎬</span>
+                <span>Watchlist</span>
+            </button>
+
+            <button class="object memories" onclick="openCollection('memories')">
+                <span class="emoji">🖼️</span>
+                <span>Memories</span>
+            </button>
+
+            <button class="object favorites" onclick="openCollection('favorites')">
+                <span class="emoji">🌸</span>
+                <span>Favorites</span>
+            </button>
+
+            <button class="object diary" onclick="openCollection('diary')">
+                <span class="emoji">📓</span>
+                <span>Diary</span>
+            </button>
+
+            <div class="plant">🪴</div>
+
+            <div class="desk"></div>
+            <div class="floor"></div>
+
+        </div>
+
     </div>
+</section>
 
-    <div class="object photos"
-         onclick="alert('Photos coming next 🖼️')">
-      🖼️
+
+<!-- COLLECTION MODAL -->
+
+<div class="modal" id="collectionModal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+            <h2 id="collectionTitle">Bookshelf</h2>
+            <button class="close" onclick="closeModal()">×</button>
+        </div>
+
+        <button class="back" onclick="closeModal()">← Back to my room</button>
+
+        <div class="collection-header">
+            <span id="collectionDescription"></span>
+            <button class="add-btn" onclick="showForm()">＋ Add</button>
+        </div>
+
+        <div class="form" id="form">
+
+            <label>Picture</label>
+            <input type="file" id="imageInput" accept="image/*">
+            <img class="preview" id="preview">
+
+            <label id="nameLabel">Name</label>
+            <input type="text" id="nameInput" placeholder="Give it a name...">
+
+            <label id="extraLabel">Details</label>
+            <input type="text" id="extraInput" placeholder="Add some details...">
+
+            <label>Rating</label>
+            <select id="ratingInput">
+                <option value="⭐">⭐</option>
+                <option value="⭐⭐">⭐⭐</option>
+                <option value="⭐⭐⭐">⭐⭐⭐</option>
+                <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                <option value="⭐⭐⭐⭐⭐" selected>⭐⭐⭐⭐⭐</option>
+            </select>
+
+            <label>Your thoughts</label>
+            <textarea id="thoughtsInput" placeholder="Write something..."></textarea>
+
+            <button class="save" onclick="saveItem()">Save to my world ✨</button>
+
+        </div>
+
+        <div class="items" id="items"></div>
+
     </div>
-
-    <div class="object music"
-         onclick="alert('Music coming soon 🎧')">
-      🎧
-    </div>
-
-    <div class="object bed"
-         onclick="alert('Cozy Corner coming soon 🛏️')">
-      🛏️
-    </div>
-
-    <div class="object plant"
-         onclick="alert('Memories coming soon 🌱')">
-      🌱
-    </div>
-
-    <div class="hint">
-      ✨ Click something ✨
-    </div>
-
-  </div>
-
-
-  <!-- BOOKSHELF -->
-
-  <div class="bookshelfPage" id="bookshelfPage">
-
-    <button class="back" onclick="goHome()">
-      ← Back to my room
-    </button>
-
-    <div class="bookshelfTitle">
-      📚 My Bookshelf
-    </div>
-
-    <div id="sections"></div>
-
-    <div style="text-align:center;">
-      <button onclick="addSection()">
-        ＋ Add a section
-      </button>
-    </div>
-
-  </div>
 
 </div>
 
 
 <script>
 
-  let sections = JSON.parse(
-    localStorage.getItem("myBookshelf")
-  ) || [
-    {
-      name: "♡ Favorites",
-      books: []
-    }
-  ];
+let currentCollection = "";
 
+/* COLLECTION INFORMATION */
 
-  function openBookshelf() {
+const info = {
 
-    document.getElementById("home").style.display = "none";
+    books: {
+        title: "📚 My Bookshelf",
+        description: "little stories I want to remember",
+        name: "Book name",
+        extra: "Author"
+    },
 
-    document.getElementById("bookshelfPage").style.display = "block";
+    music: {
+        title: "🎧 My Music",
+        description: "songs that live in my head",
+        name: "Song name",
+        extra: "Artist"
+    },
 
-    renderSections();
-  }
+    movies: {
+        title: "🎬 My Watchlist",
+        description: "things I want to watch",
+        name: "Movie / Anime name",
+        extra: "Year or genre"
+    },
 
+    memories: {
+        title: "🖼️ My Memories",
+        description: "little moments worth keeping",
+        name: "Memory title",
+        extra: "Date"
+    },
 
-  function goHome() {
+    favorites: {
+        title: "🌸 My Favorites",
+        description: "things I simply love",
+        name: "Name",
+        extra: "Category"
+    },
 
-    document.getElementById("bookshelfPage").style.display = "none";
-
-    document.getElementById("home").style.display = "block";
-  }
-
-
-  function save() {
-
-    localStorage.setItem(
-      "myBookshelf",
-      JSON.stringify(sections)
-    );
-
-  }
-
-
-  function addSection() {
-
-    let name = prompt(
-      "What do you want to call your new section?"
-    );
-
-    if (!name || !name.trim()) return;
-
-    sections.push({
-      name: name.trim(),
-      books: []
-    });
-
-    save();
-
-    renderSections();
-  }
-
-
-  function addBook(sectionIndex) {
-
-    let title = prompt("Book title:");
-
-    if (!title || !title.trim()) return;
-
-    let author = prompt("Author:");
-
-    if (!author || !author.trim()) {
-      author = "Unknown author";
+    diary: {
+        title: "📓 My Diary",
+        description: "little pieces of my thoughts",
+        name: "Entry title",
+        extra: "Date"
     }
 
-    sections[sectionIndex].books.push({
-      title: title.trim(),
-      author: author.trim()
-    });
-
-    save();
-
-    renderSections();
-  }
+};
 
 
-  function deleteBook(sectionIndex, bookIndex) {
+/* OPEN COLLECTION */
 
-    sections[sectionIndex].books.splice(bookIndex, 1);
+function openCollection(type) {
 
-    save();
+    currentCollection = type;
 
-    renderSections();
-  }
+    document.getElementById("collectionTitle").textContent =
+        info[type].title;
+
+    document.getElementById("collectionDescription").textContent =
+        info[type].description;
+
+    document.getElementById("nameLabel").textContent =
+        info[type].name;
+
+    document.getElementById("extraLabel").textContent =
+        info[type].extra;
+
+    document.getElementById("nameInput").placeholder =
+        info[type].name;
+
+    document.getElementById("extraInput").placeholder =
+        info[type].extra;
+
+    document.getElementById("form").classList.remove("show");
+
+    loadItems();
+
+    document.getElementById("collectionModal").classList.add("show");
+}
 
 
-  function deleteSection(sectionIndex) {
+/* CLOSE */
 
-    let sure = confirm(
-      "Delete this entire section?"
-    );
-
-    if (!sure) return;
-
-    sections.splice(sectionIndex, 1);
-
-    save();
-
-    renderSections();
-  }
+function closeModal() {
+    document.getElementById("collectionModal").classList.remove("show");
+}
 
 
-  function renderSections() {
+/* SHOW FORM */
 
-    let container =
-      document.getElementById("sections");
+function showForm() {
+
+    document.getElementById("form").classList.add("show");
+
+    document.getElementById("imageInput").value = "";
+    document.getElementById("nameInput").value = "";
+    document.getElementById("extraInput").value = "";
+    document.getElementById("thoughtsInput").value = "";
+
+    document.getElementById("preview").style.display = "none";
+}
+
+
+/* IMAGE PREVIEW */
+
+document.getElementById("imageInput").addEventListener("change", function() {
+
+    const file = this.files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+        const preview = document.getElementById("preview");
+
+        preview.src = e.target.result;
+        preview.style.display = "block";
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+
+/* SAVE ITEM */
+
+function saveItem() {
+
+    const file = document.getElementById("imageInput").files[0];
+    const name = document.getElementById("nameInput").value.trim();
+    const extra = document.getElementById("extraInput").value.trim();
+    const rating = document.getElementById("ratingInput").value;
+    const thoughts = document.getElementById("thoughtsInput").value.trim();
+
+    if (!name) {
+        alert("Please give it a name 🌷");
+        return;
+    }
+
+    if (!file) {
+        alert("Please choose a picture 🖼️");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+        const item = {
+
+            id: Date.now(),
+
+            image: e.target.result,
+
+            name: name,
+
+            extra: extra,
+
+            rating: rating,
+
+            thoughts: thoughts
+
+        };
+
+        const key = "myLittleWorld_" + currentCollection;
+
+        let items = JSON.parse(localStorage.getItem(key)) || [];
+
+        items.push(item);
+
+        try {
+
+            localStorage.setItem(key, JSON.stringify(items));
+
+        } catch (error) {
+
+            alert("The picture is too large for browser storage. Try a smaller image.");
+            return;
+
+        }
+
+        document.getElementById("form").classList.remove("show");
+
+        loadItems();
+
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+/* LOAD ITEMS */
+
+function loadItems() {
+
+    const container = document.getElementById("items");
+
+    const key = "myLittleWorld_" + currentCollection;
+
+    const items = JSON.parse(localStorage.getItem(key)) || [];
 
     container.innerHTML = "";
 
+    if (items.length === 0) {
 
-    sections.forEach(function(section, sectionIndex) {
+        container.innerHTML =
+            '<div class="empty">Nothing here yet... 🌷<br>Click ＋ Add to create something.</div>';
 
-      let sectionDiv =
-        document.createElement("div");
+        return;
+    }
 
-      sectionDiv.className = "section";
+    items.forEach(item => {
 
+        const card = document.createElement("div");
 
-      let heading =
-        document.createElement("h2");
+        card.className = "card";
 
-      heading.textContent = section.name;
+        card.innerHTML = `
 
-      sectionDiv.appendChild(heading);
+            <button class="delete" onclick="deleteItem(${item.id})">×</button>
 
+            <img src="${item.image}" alt="${escapeHTML(item.name)}">
 
-      let addButton =
-        document.createElement("button");
+            <h3>${escapeHTML(item.name)}</h3>
 
-      addButton.textContent = "＋ Add book";
+            <p>${escapeHTML(item.extra)}</p>
 
-      addButton.onclick = function() {
-        addBook(sectionIndex);
-      };
+            <p>${item.rating}</p>
 
-      sectionDiv.appendChild(addButton);
+            <p>${escapeHTML(item.thoughts)}</p>
 
+        `;
 
-      let deleteButton =
-        document.createElement("button");
-
-      deleteButton.textContent = "Delete section";
-
-      deleteButton.onclick = function() {
-        deleteSection(sectionIndex);
-      };
-
-      sectionDiv.appendChild(deleteButton);
-
-
-      let grid =
-        document.createElement("div");
-
-      grid.className = "booksGrid";
-
-
-      if (section.books.length === 0) {
-
-        let empty =
-          document.createElement("p");
-
-        empty.className = "empty";
-
-        empty.textContent =
-          "Your shelf is waiting for its first book ✨";
-
-        grid.appendChild(empty);
-
-      }
-
-
-      section.books.forEach(function(book, bookIndex) {
-
-        let bookDiv =
-          document.createElement("div");
-
-        bookDiv.className = "book";
-
-
-        bookDiv.innerHTML =
-          "📖" +
-          "<h3>" +
-          escapeHTML(book.title) +
-          "</h3>" +
-          "<p>" +
-          escapeHTML(book.author) +
-          "</p>";
-
-
-        let deleteButton =
-          document.createElement("button");
-
-        deleteButton.textContent = "Remove";
-
-        deleteButton.onclick = function() {
-          deleteBook(sectionIndex, bookIndex);
-        };
-
-        bookDiv.appendChild(deleteButton);
-
-        grid.appendChild(bookDiv);
-
-      });
-
-
-      sectionDiv.appendChild(grid);
-
-      container.appendChild(sectionDiv);
+        container.appendChild(card);
 
     });
 
-  }
+}
 
 
-  function escapeHTML(text) {
+/* DELETE */
 
-    let div = document.createElement("div");
+function deleteItem(id) {
+
+    const key = "myLittleWorld_" + currentCollection;
+
+    let items = JSON.parse(localStorage.getItem(key)) || [];
+
+    items = items.filter(item => item.id !== id);
+
+    localStorage.setItem(key, JSON.stringify(items));
+
+    loadItems();
+}
+
+
+/* SECURITY */
+
+function escapeHTML(text) {
+
+    const div = document.createElement("div");
 
     div.textContent = text;
 
     return div.innerHTML;
 
-  }
+}
+
+
+/* CLICK OUTSIDE MODAL */
+
+document.getElementById("collectionModal").addEventListener("click", function(e) {
+
+    if (e.target === this) {
+        closeModal();
+    }
+
+});
 
 </script>
 
