@@ -1,126 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Little Moodboard ♡</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      background: #f7f1eb;
-      font-family: Georgia, serif;
-      color: #3f3833;
-    }
+<title>little things ♡</title>
 
-    header {
-      text-align: center;
-      padding: 35px 20px 20px;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    h1 {
-      font-size: 42px;
-      margin: 0;
-    }
+body {
+  margin: 0;
+  background: #eee7df;
+  color: #403a36;
+  font-family: Georgia, serif;
+  overflow-x: hidden;
+}
 
-    header p {
-      font-family: Arial, sans-serif;
-      color: #81756d;
-    }
+/* PAPER TEXTURE */
 
-    .board {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-      padding: 25px;
-      max-width: 1100px;
-      margin: auto;
-    }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.25;
+  background-image:
+    radial-gradient(#8b8178 0.5px, transparent 0.5px);
+  background-size: 8px 8px;
+}
 
-    .card {
-      background: white;
-      padding: 15px;
-      border-radius: 6px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      transform: rotate(-1deg);
-    }
+/* HEADER */
 
-    .card:nth-child(even) {
-      transform: rotate(1.5deg);
-    }
+header {
+  text-align: center;
+  padding: 70px 20px 35px;
+}
 
-    .card img {
-      width: 100%;
-      border-radius: 4px;
-      display: block;
-    }
+.small {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8b8178;
+}
 
-    .quote {
-      font-size: 22px;
-      line-height: 1.5;
-      text-align: center;
-      padding: 35px 15px;
-    }
+h1 {
+  font-size: clamp(42px, 8vw, 75px);
+  font-weight: normal;
+  margin: 15px 0 8px;
+}
 
-    .music {
-      text-align: center;
-      padding: 25px 10px;
-      font-family: Arial, sans-serif;
-    }
+.subtitle {
+  font-family: Arial, sans-serif;
+  color: #81766e;
+  font-size: 14px;
+}
 
-    .colors {
-      display: flex;
-      height: 80px;
-    }
+/* BOARD */
 
-    .colors div {
-      flex: 1;
-    }
-  </style>
+.board {
+  width: min(1200px, 92%);
+  margin: auto;
+  columns: 4 220px;
+  column-gap: 25px;
+}
+
+/* CARDS */
+
+.card {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 25px;
+  break-inside: avoid;
+
+  background: #fffaf5;
+  padding: 13px;
+
+  box-shadow:
+    0 8px 25px rgba(70,55,45,0.12);
+
+  cursor: grab;
+
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover {
+  transform: rotate(0deg) scale(1.025);
+  box-shadow:
+    0 14px 35px rgba(70,55,45,0.18);
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+/* RANDOM ROTATIONS */
+
+.card:nth-child(1) { transform: rotate(-2deg); }
+.card:nth-child(2) { transform: rotate(1.5deg); }
+.card:nth-child(3) { transform: rotate(-1deg); }
+.card:nth-child(4) { transform: rotate(2deg); }
+.card:nth-child(5) { transform: rotate(-2.5deg); }
+.card:nth-child(6) { transform: rotate(1deg); }
+.card:nth-child(7) { transform: rotate(-1.5deg); }
+.card:nth-child(8) { transform: rotate(2deg); }
+
+/* IMAGES */
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+/* TAPE */
+
+.tape {
+  position: absolute;
+  width: 70px;
+  height: 22px;
+  background: rgba(210,195,174,.65);
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+/* QUOTE */
+
+.quote {
+  min-height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  padding: 35px 25px;
+
+  font-size: 23px;
+  line-height: 1.5;
+}
+
+.quote small {
+  display: block;
+  margin-top: 18px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #9a8d83;
+}
+
+/* MUSIC */
+
+.music {
+  padding: 30px 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.music .disc {
+  width: 90px;
+  height: 90px;
+  margin: auto;
+  border-radius: 50%;
+
+  background:
+    repeating-radial-gradient(
+      circle,
+      #403a36 0px,
+      #403a36 3px,
+      #514943 4px,
+      #403a36 6px
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music .disc::after {
+  content: "♡";
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #eee7df;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #403a36;
+}
+
+.music h3 {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+/* COLORS */
+
+.palette {
+  display: flex;
+  height: 110px;
+}
+
+.palette div {
+  flex: 1;
+}
+
+.color-text {
+  padding: 12px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* NOTE */
+
+.note {
+  background: #e7dccb;
+  padding: 35px 25px;
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+/* POLAROID */
+
+.polaroid {
+  background: white;
+  padding: 12px 12px 35px;
+}
+
+.polaroid img {
+  filter: sepia(.15);
+}
+
+.polaroid p {
+  text-align: center;
+  font-family: "Comic Sans MS", cursive;
+  font-size: 14px;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 70px 20px;
+  font-family: Arial, sans-serif;
+  color: #8b8178;
+  font-size: 12px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+  header {
+    padding-top: 50px;
+  }
+
+  .board {
+    columns: 2 150px;
+    column-gap: 15px;
+  }
+
+  .card {
+    margin-bottom: 15px;
+  }
+
+  .quote {
+    font-size: 18px;
+  }
+
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>my little moodboard ♡</h1>
-    <p>little things that feel like me</p>
-  </header>
+<header>
 
-  <main class="board">
+  <div class="small">♡ a collection of little things ♡</div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80">
+  <h1>my moodboard</h1>
+
+  <div class="subtitle">
+    things I love · things I notice · things I feel
+  </div>
+
+</header>
+
+
+<main class="board">
+
+  <!-- IMAGE -->
+
+  <div class="card">
+    <div class="tape"></div>
+
+    <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=800&q=80">
+
+  </div>
+
+
+  <!-- QUOTE -->
+
+  <div class="card quote">
+
+    <div>
+      “Collecting little moments
+      <br>
+      that make ordinary days feel special.”
+
+      <small>— little reminder</small>
     </div>
 
-    <div class="card quote">
-      “Collecting little moments.”
+  </div>
+
+
+  <!-- POLAROID -->
+
+  <div class="card polaroid">
+
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80">
+
+    <p>somewhere I would like to be ♡</p>
+
+  </div>
+
+
+  <!-- MUSIC -->
+
+  <div class="card music">
+
+    <div class="disc"></div>
+
+    <h3>currently listening</h3>
+
+    <p>soft songs & quiet sounds ♫</p>
+
+    <p>──────── ♫ ────────</p>
+
+  </div>
+
+
+  <!-- PALETTE -->
+
+  <div class="card">
+
+    <div class="palette">
+
+      <div style="background:#d8c3b5"></div>
+      <div style="background:#eee3d7"></div>
+      <div style="background:#b9a99c"></div>
+      <div style="background:#76685e"></div>
+
     </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=600&q=80">
+    <div class="color-text">
+      today's colors · warm & quiet
     </div>
 
-    <div class="card music">
-      🎧<br><br>
-      currently listening<br>
-      <b>soft songs ♫</b>
+  </div>
+
+
+  <!-- JOURNAL -->
+
+  <div class="card note">
+
+    <div class="tape"></div>
+
+    <b>little note to myself</b>
+
+    <br><br>
+
+    You don't have to have everything
+    figured out.
+
+    <br>
+
+    Let things take their time.
+
+  </div>
+
+
+  <!-- ANOTHER IMAGE -->
+
+  <div class="card">
+
+    <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80">
+
+  </div>
+
+
+  <!-- FINAL QUOTE -->
+
+  <div class="card quote">
+
+    <div>
+
+      “There is beauty
+      <br>
+      in the unfinished.”
+
+      <small>♡</small>
+
     </div>
 
-    <div class="card">
-      <div class="colors">
-        <div style="background:#d8c3b5;"></div>
-        <div style="background:#eee3d7;"></div>
-        <div style="background:#b9a99c;"></div>
-        <div style="background:#6f6259;"></div>
-      </div>
-      <p>my current colors</p>
-    </div>
+  </div>
 
-    <div class="card quote">
-      “Somewhere between dreams and reality.”
-    </div>
+</main>
 
-  </main>
+
+<footer>
+
+  made with little pieces of the internet ♡
+
+</footer>
+
+
+<script>
+
+/* SIMPLE DRAGGING */
+
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+
+  let isDragging = false;
+  let startX;
+  let startY;
+  let originalX = 0;
+  let originalY = 0;
+
+  card.addEventListener("pointerdown", (e) => {
+
+    isDragging = true;
+
+    card.setPointerCapture(e.pointerId);
+
+    startX = e.clientX;
+    startY = e.clientY;
+
+    card.style.zIndex = 1000;
+
+  });
+
+  card.addEventListener("pointermove", (e) => {
+
+    if (!isDragging) return;
+
+    const x = e.clientX - startX;
+    const y = e.clientY - startY;
+
+    card.style.transform =
+      `translate(${originalX + x}px, ${originalY + y}px) rotate(0deg)`;
+
+  });
+
+  card.addEventListener("pointerup", () => {
+
+    isDragging = false;
+
+    originalX += 0;
+    originalY += 0;
+
+  });
+
+});
+
+</script>
 
 </body>
-</html>
+</html>        
