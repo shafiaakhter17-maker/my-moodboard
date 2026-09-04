@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Little Moodboard ♡</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f7f1eb;
+      font-family: Georgia, serif;
+      color: #3f3833;
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 20px 20px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin: 0;
+    }
+
+    header p {
+      font-family: Arial, sans-serif;
+      color: #81756d;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      padding: 25px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transform: rotate(-1deg);
+    }
+
+    .card:nth-child(even) {
+      transform: rotate(1.5deg);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .quote {
+      font-size: 22px;
+      line-height: 1.5;
+      text-align: center;
+      padding: 35px 15px;
+    }
+
+    .music {
+      text-align: center;
+      padding: 25px 10px;
+      font-family: Arial, sans-serif;
+    }
+
+    .colors {
+      display: flex;
+      height: 80px;
+    }
+
+    .colors div {
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>my little moodboard ♡</h1>
+    <p>little things that feel like me</p>
+  </header>
+
+  <main class="board">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80">
+    </div>
+
+    <div class="card quote">
+      “Collecting little moments.”
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=600&q=80">
+    </div>
+
+    <div class="card music">
+      🎧<br><br>
+      currently listening<br>
+      <b>soft songs ♫</b>
+    </div>
+
+    <div class="card">
+      <div class="colors">
+        <div style="background:#d8c3b5;"></div>
+        <div style="background:#eee3d7;"></div>
+        <div style="background:#b9a99c;"></div>
+        <div style="background:#6f6259;"></div>
+      </div>
+      <p>my current colors</p>
+    </div>
+
+    <div class="card quote">
+      “Somewhere between dreams and reality.”
+    </div>
+
+  </main>
+
+</body>
+</html>
